@@ -17,7 +17,7 @@ export default function LoginScreen() {
 
     const ValidateCredentials = () => {
         if (!isEmpty(email) && !isEmpty(password)) {
-          alert('Under Development');
+          navigation.navigate('Dashboard')
 
         } else {
           alert('Please enter your email or password!');
