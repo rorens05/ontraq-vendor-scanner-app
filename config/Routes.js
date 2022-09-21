@@ -7,6 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SplashScreen from '../app/views/splashscreen/SplashScreen';
 import Login from '../app/views/login/Login';
 import LoginScreen from '../app/views/login/LoginScreen';
+import SignUp from '../app/views/signup/SignUp';
 const {width} = Dimensions.get('screen');
 
 const Stack = createStackNavigator();
@@ -258,6 +259,14 @@ export default function Routes() {
         <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
           options={{
             headerShown: false,
             gestureEnabled: false
