@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import {View, Text, Image} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { NavigationContext } from '@react-navigation/native';
 import logo from '../../assets/ceap-logo.png'
 import Button from './components/Button'
 import InputText from './components/InputText'
 import {isEmpty} from 'lodash'
 
 export default function LoginScreen() {
+    const navigation = useContext(NavigationContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [validateUsername, setValidateUsername] = useState(true);
@@ -47,7 +49,7 @@ export default function LoginScreen() {
             style={{borderWidth: 1, borderColor: validatePassword == true ? '#fff' : 'red'}}
             
           />
-          <TouchableOpacity onPress={() => alert('Under Development')}>
+          <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
             <Text style={{textAlign: 'right',color: '#002E8A', fontSize: 16, fontWeight: '200', marginBottom: 20}}>Forgot password?</Text>
           </TouchableOpacity>
         </View>

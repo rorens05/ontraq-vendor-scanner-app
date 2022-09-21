@@ -7,6 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SplashScreen from '../app/views/splashscreen/SplashScreen';
 import Login from '../app/views/login/Login';
 import LoginScreen from '../app/views/login/LoginScreen';
+import ForgotPassword from '../app/views/forgotPassword/ForgotPassword';
 const {width} = Dimensions.get('screen');
 
 const Stack = createStackNavigator();
@@ -263,6 +264,15 @@ export default function Routes() {
             gestureEnabled: false
           }}
         />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        
        
       </Stack.Navigator>
     </NavigationContainer>
