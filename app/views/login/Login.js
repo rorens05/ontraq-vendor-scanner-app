@@ -1,10 +1,27 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, Image} from 'react-native'
+import logo from '../../assets/ceap-logo.png'
+import Button from './components/Button'
 
 export default function Login() {
   return (
-    <View>
-      <Text>This is login screen</Text>
+    <View style={{flex: 1, justifyContent: 'space-evenly', alignItems: 'center', backgroundColor: '#fff'}}>
+      <View>
+        <Image source={logo} style={{width: 200, height: 200}} />
+      </View>
+      <View style={{alignItems: 'center', paddingHorizontal: 40}}>
+        <Text style={{color: '#002E8A', fontSize: 24, fontWeight: 'bold'}}>Hello!</Text>
+        <Text style={{color: '#9A9A9A', fontSize: 16}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</Text>
+      </View>
+      <View style={{alignItems: 'center'}}>
+        <Button label={'Sign in'} onPress={() => alert('Under Development')} />
+        <View style={{alignItems: 'center', flexDirection: 'row', paddingVertical: 10}}>
+          <View style={{height: 2, width: 100, backgroundColor: '#002E8A'}} />
+          <Text style={{color: '#9A9A9A', fontSize: 16, paddingHorizontal: 5}}>OR</Text>
+          <View style={{height: 2, width: 100, backgroundColor: '#002E8A'}} />
+        </View>
+        <Button label={'Sign up'} onPress={() => alert('Under Development')} />
+      </View>
     </View>
   )
 }
