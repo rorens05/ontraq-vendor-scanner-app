@@ -6,7 +6,7 @@ export default function SplashScreen() {
 const navigation = React.useContext(NavigationContext)
 
   React.useEffect(() => {
-    setInterval(() => {
+    setTimeout(() => {
       navigation.navigate('Login')
     }, 3000);
   }, [])
