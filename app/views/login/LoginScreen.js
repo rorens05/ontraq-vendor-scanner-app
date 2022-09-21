@@ -58,7 +58,7 @@ export default function LoginScreen() {
               style={{borderWidth: 1, borderColor: validatePassword == true ? '#fff' : 'red'}}
               
             />
-            <TouchableOpacity onPress={() => alert('Under Development')}>
+            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={{textAlign: 'right',color: '#002E8A', fontSize: 16, fontWeight: '200', marginBottom: 20}}>Forgot password?</Text>
             </TouchableOpacity>
           </View>
