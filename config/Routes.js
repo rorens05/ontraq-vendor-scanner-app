@@ -11,6 +11,8 @@ import Home from '../app/views/home/Home';
 import Program from '../app/views/program/Program';
 import Speaker from '../app/views/speaker/Speaker';
 import Sponsor from '../app/views/sponsor/Sponsor';
+import ForgotPassword from '../app/views/forgotPassword/ForgotPassword';
+import SignUp from '../app/views/signup/SignUp';
 const {width} = Dimensions.get('screen');
 
 const Stack = createStackNavigator();
@@ -211,6 +213,14 @@ export default function Routes() {
         />
         <Stack.Screen
           name="Login"
+          component={Login}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="Dashboard"
           component={MyTabs}
           options={{
             headerShown: false,
@@ -225,7 +235,22 @@ export default function Routes() {
             gestureEnabled: false
           }}
         />
-       
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
