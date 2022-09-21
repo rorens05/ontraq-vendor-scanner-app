@@ -1,16 +1,10 @@
-import React, { useContext } from 'react';
-import { Dimensions, Image, Text, View } from 'react-native';
+import React from 'react';
+import { Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { NavigationContext, CommonActions } from '@react-navigation/native';
 const bellIcon = require('../assets/ceap-bell.png');
 const userImage = require('../assets/ceap-avatar.png');
-const { width, height } = Dimensions.get('window');
-
 
 export default function Header({ }) {
-
-  const navigation = useContext(NavigationContext);
-
   return (
     <View style={{ padding: 10, backgroundColor: '#fff' }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -35,7 +29,6 @@ export default function Header({ }) {
           <Image source={bellIcon} resizeMode='contain' style={{ height: 30, width: 30 }} />
         </TouchableOpacity>
       </View>
-
     </View>
   )
 }
