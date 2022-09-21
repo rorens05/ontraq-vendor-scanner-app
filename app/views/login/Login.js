@@ -23,7 +23,7 @@ export default function Login() {
           <Text style={{color: '#9A9A9A', fontSize: 16, paddingHorizontal: 5}}>OR</Text>
           <View style={{height: 2, width: 100, backgroundColor: '#002E8A'}} />
         </View>
-        <Button label={'Sign up'} onPress={() => alert('Under Development')} />
+        <Button label={'Sign up'} onPress={() => navigation.navigate('SignUp')} />
       </View>
     </View>
   )
