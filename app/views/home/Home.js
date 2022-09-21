@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <Header />
       <View style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: 20, marginBottom: 70}}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{paddingBottom: 20}}>
             <Text style={{color: '#000000', fontSize: 24, fontWeight: 'bold', marginBottom: 24}}>Announcement</Text> 
             <ScrollView horizontal showsHorizontalScrollIndicator={false} >
