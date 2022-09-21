@@ -14,7 +14,12 @@ export default function Speaker() {
     {
       name: 'Fr. Odine Areola',
       position: 'CEAP Region 5 Trustee',
-      image: areolaIcon
+      image: areolaIcon,
+      contactNumber: '09123123123',
+      email: 'odineareola@gmail.com',
+      fb: 'Fr. Odine Areola',
+      instagram: '@fr.Odine',
+      twitter: '@fr.Odine',
     },
     {
       name: 'Fr. Ramon Caluza',
@@ -95,7 +100,7 @@ export default function Speaker() {
             .includes(searchPhrase.toUpperCase()))
             .map((item, key) => {
               return (
-                <SpeakerItem key={key} image={item?.image} name={item?.name} position={item?.position} />
+                <SpeakerItem key={key} item={item} />
               );
             })}
         </View>

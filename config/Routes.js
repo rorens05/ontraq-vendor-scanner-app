@@ -13,6 +13,7 @@ import Speaker from '../app/views/speaker/Speaker';
 import Sponsor from '../app/views/sponsor/Sponsor';
 import ForgotPassword from '../app/views/forgotPassword/ForgotPassword';
 import SignUp from '../app/views/signup/SignUp';
+import SpeakerProfile from '../app/views/speaker/components/SpeakerProfile';
 const {width} = Dimensions.get('screen');
 
 const Stack = createStackNavigator();
@@ -246,6 +247,14 @@ export default function Routes() {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="SpeakerProfile"
+          component={SpeakerProfile}
           options={{
             headerShown: false,
             gestureEnabled: false

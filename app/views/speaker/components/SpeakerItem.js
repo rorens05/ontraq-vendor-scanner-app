@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Text, View, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { NavigationContext } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('screen');
-export default function SpeakerItem({ image , name, position}) {
+export default function SpeakerItem({ item }) {
+  const navigation = useContext(NavigationContext);
   return (
     <View
       style={{
@@ -13,7 +15,7 @@ export default function SpeakerItem({ image , name, position}) {
       }}
     >
       <TouchableOpacity
-        onPress={() => alert('Under Development')}
+        onPress={() => navigation.navigate('SpeakerProfile', {item})}
         style={{
           width: width * 0.3,
           height: width * 0.4,
@@ -21,10 +23,10 @@ export default function SpeakerItem({ image , name, position}) {
           borderRadius: 8,
           justifyContent: 'space-evenly'
         }}>
-        <Image source={image} style={{ width: 100, height: 100, borderRadius: 50, alignSelf: 'center' }} resizeMode='contain' />
+        <Image source={item?.image} style={{ width: 100, height: 100, borderRadius: 50, alignSelf: 'center' }} resizeMode='contain' />
         <View style={{ alignItems: 'center' }}>
-          <Text style={{ color: '#000000', fontSize: 12, fontWeight: 'bold' }}>{name}</Text>
-          <Text style={{ textAlignVertical: 'center', marginLeft: 5, fontSize: 8, color: '#000000' }}>{position}</Text>
+          <Text style={{ color: '#000000', fontSize: 12, fontWeight: 'bold' }}>{item?.name}</Text>
+          <Text style={{ textAlignVertical: 'center', marginLeft: 5, fontSize: 8, color: '#000000' }}>{item?.position}</Text>
         </View>
       </TouchableOpacity>
     </View>
