@@ -7,7 +7,8 @@ export default function RadiusTextInput({
   placeholder,
   editable,
   withIcon,
-  secureTextEntry
+  secureTextEntry,
+  keyboardType,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const eye_open = require('../../../assets/eye-open.png');
@@ -23,6 +24,7 @@ export default function RadiusTextInput({
         value={value}
         onChangeText={onChange}
         placeholder={placeholder}
+        keyboardType={keyboardType}
         style={{ fontSize: 10 }}
         secureTextEntry={!secureTextEntry || showPassword ? false : true}
       />

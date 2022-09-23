@@ -7,7 +7,7 @@ const navigation = React.useContext(NavigationContext)
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Login')
+      navigation.replace('Login')
     }, 5000);
     return () => {
       clearTimeout(timer)

@@ -105,11 +105,13 @@ export default function SignUp() {
                 value={email}
                 placeholder={'Email'}
                 onChange={text => setEmail(text)}
+                keyboardType='email-address'
               />
               <RadiusTextInput
                 value={number}
                 placeholder={'Mobile Number'}
                 onChange={text => setNumber(text)}
+                keyboardType='number-pad'
               />
               <RadiusTextInput
                 value={password}
