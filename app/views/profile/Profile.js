@@ -72,8 +72,6 @@ export default function Profile() {
         <ProfileTab icon={genInfo} label={'General Information'} onPress={() => alert('Under Development')} arrow={arrow} />
         <ProfileTab icon={accSet} label={'Account Settings'} onPress={() => alert('Under Development')} arrow={arrow} />
         <ProfileTab icon={logoutIcon} label={'Logout'} onPress={() => showAlert()} />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 15, alignItems: 'center' }}>
-        </View>
       </View>
     </>
   );
