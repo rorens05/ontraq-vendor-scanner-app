@@ -14,8 +14,9 @@ import Sponsor from '../app/views/sponsor/Sponsor';
 import ForgotPassword from '../app/views/forgotPassword/ForgotPassword';
 import SignUp from '../app/views/signup/SignUp';
 import SpeakerProfile from '../app/views/speaker/components/SpeakerProfile';
-const {width} = Dimensions.get('screen');
+import Profile from '../app/views/profile/Profile';
 
+const {width} = Dimensions.get('screen');
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const sponsorsName = 'Sponsors';
@@ -255,6 +256,14 @@ export default function Routes() {
         <Stack.Screen
           name="SpeakerProfile"
           component={SpeakerProfile}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={Profile}
           options={{
             headerShown: false,
             gestureEnabled: false

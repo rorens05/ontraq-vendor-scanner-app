@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Image, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { NavigationContext } from '@react-navigation/native';
 const bellIcon = require('../assets/ceap-bell.png');
 const userImage = require('../assets/ceap-avatar.png');
 
 export default function Header({ }) {
+  const navigation = useContext(NavigationContext);
   return (
     <View style={{ padding: 10, backgroundColor: '#fff' }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
         <View style={{ flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' }}>
           <TouchableOpacity 
-          onPress={() => alert('Under Development')}
+          onPress={() => navigation.navigate('Profile')}
           style={{
             height: 70,
             width: 70,
