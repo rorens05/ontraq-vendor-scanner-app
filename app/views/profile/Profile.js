@@ -1,6 +1,6 @@
 import { CommonActions, NavigationContext } from '@react-navigation/native';
-import React, { useContext, useState } from 'react';
-import { View, Text, TouchableOpacity, Alert, ScrollView, Image } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, TouchableOpacity, Alert, Image } from 'react-native';
 import ProfileTab from './components/ProfileTab';
 const arrow = require('../../assets/arrow.png');
 const avatar = require('../../assets/ceap-avatar.png');
@@ -69,8 +69,8 @@ export default function Profile() {
             <Text style={{ color: '#707070', fontSize: 16, fontWeight: '400' }}>Attendees</Text>
           </View>
         </View>
-        <ProfileTab icon={genInfo} label={'General Information'} onPress={() => alert('Under Development')} arrow={arrow} />
-        <ProfileTab icon={accSet} label={'Account Settings'} onPress={() => alert('Under Development')} arrow={arrow} />
+        <ProfileTab icon={genInfo} label={'General Information'} onPress={() => navigation.navigate('GeneralInformation')} arrow={arrow} />
+        <ProfileTab icon={accSet} label={'Account Settings'} onPress={() => navigation.navigate('AccountSettings')} arrow={arrow} />
         <ProfileTab icon={logoutIcon} label={'Logout'} onPress={() => showAlert()} />
       </View>
     </>

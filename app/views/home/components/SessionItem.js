@@ -8,7 +8,7 @@ export default function SessionItem({image }) {
       <View style={{marginLeft: 20, justifyContent: 'center'}}>
         <Text style={{color: '#000000', fontSize: 16, fontWeight: 'bold'}}>Session 1</Text>
         <Text style={{color: '#D82E2E', fontSize: 12, fontWeight: '300'}}>Sat, Aug 7 | 10:30 AM - 2:30 PM</Text>
-        <Text style={{color: '##000000', fontSize: 12, fontWeight: '300'}}>Function Room 1</Text>
+        <Text style={{color: '#000000', fontSize: 12, fontWeight: '300'}}>Function Room 1</Text>
         <Text style={{color: '#000000', fontSize: 12, fontWeight: 'bold'}}>Speakers:</Text>
         <View style={{flexDirection: 'row'}}>
           <Image source={image} style={{width: 20, height: 20, borderRadius: 10}} />
