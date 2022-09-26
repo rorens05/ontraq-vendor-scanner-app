@@ -3,6 +3,8 @@ import { View, Text, Image, TouchableOpacity, Dimensions } from 'react-native'
 import { NavigationContext } from '@react-navigation/native';
 import { getParams } from '../../../utils/navigation_helper';
 import SpeakerItem from '../../speaker/components/SpeakerItem';
+import Button from './Button';
+import Attendees from './Attendees';
 const backArrow = require('../../../assets/left-arrow.png')
 const tfiBg = require('../../../assets/ceap-tfi-bg.png')
 const telephoneIcon = require('../../../assets/ceap-telephone.png')
@@ -37,6 +39,10 @@ export default function ProgramProfile() {
         <Text style={{ color: '#000000', fontSize: 32, fontWeight: 'bold' }}>{params?.item?.title}</Text>
         <Text style={{ color: '#000000', fontSize: 16, fontWeight: '300', marginTop: 10 }}>{params?.item?.venue}</Text>
         <Text style={{ color: '#D82E2E', fontSize: 16, fontWeight: 'bold', marginTop: 10 }}>{params?.item?.date}</Text>
+        <View style={{ marginVertical: 10 }}>
+          <Button label={'Attend'} onPress={() => alert('Under Development')} />
+        </View>
+        <Attendees attend={10} max={20} />
         {params?.item?.description &&
           <>
             <Text style={{ color: '#000000', fontSize: 24, fontWeight: 'bold', marginTop: 10 }}>Overview:</Text>

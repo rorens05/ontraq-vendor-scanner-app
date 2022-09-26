@@ -84,6 +84,7 @@ export default function Speaker() {
           <Text style={{ color: '#000000', fontSize: 24, fontWeight: 'bold', marginBottom: 24 }}>Speakers</Text>
         </View>
         <SearchBar
+          placeholder={'Search Speaker here ...'}
           searchPhrase={searchPhrase}
           setSearchPhrase={setSearchPhrase}
           clicked={clicked}

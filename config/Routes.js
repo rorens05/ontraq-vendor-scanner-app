@@ -19,6 +19,9 @@ import GeneralInformation from '../app/views/profile/components/GeneralInformati
 import AccountSettings from '../app/views/profile/components/AccountSettings';
 import ProgramProfile from '../app/views/program/components/ProgramProfile';
 import SponsorProfile from '../app/views/sponsor/components/SponsorProfile';
+import Dashboard from '../app/views/dashboard/Dashboard';
+import EventProfile from '../app/views/dashboard/components/EventProfile';
+import UpcomingEventProfile from '../app/views/dashboard/components/UpcomingEventProfile';
 
 const {width} = Dimensions.get('screen');
 const Stack = createStackNavigator();
@@ -226,7 +229,7 @@ export default function Routes() {
           }}
         />
         <Stack.Screen
-          name="Dashboard"
+          name="Home"
           component={MyTabs}
           options={{
             headerShown: false,
@@ -300,6 +303,30 @@ export default function Routes() {
         <Stack.Screen
           name="SponsorProfile"
           component={SponsorProfile}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="Dashboard"
+          component={Dashboard}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="EventProfile"
+          component={EventProfile}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="UpcomingEventProfile"
+          component={UpcomingEventProfile}
           options={{
             headerShown: false,
             gestureEnabled: false
