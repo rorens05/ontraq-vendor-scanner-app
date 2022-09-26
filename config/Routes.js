@@ -17,6 +17,7 @@ import SpeakerProfile from '../app/views/speaker/components/SpeakerProfile';
 import Profile from '../app/views/profile/Profile';
 import GeneralInformation from '../app/views/profile/components/GeneralInformation';
 import AccountSettings from '../app/views/profile/components/AccountSettings';
+import ProgramProfile from '../app/views/program/components/ProgramProfile';
 import SponsorProfile from '../app/views/sponsor/components/SponsorProfile';
 
 const {width} = Dimensions.get('screen');
@@ -283,6 +284,14 @@ export default function Routes() {
         <Stack.Screen
           name="AccountSettings"
           component={AccountSettings}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="ProgramProfile"
+          component={ProgramProfile}
           options={{
             headerShown: false,
             gestureEnabled: false
