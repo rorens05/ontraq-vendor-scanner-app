@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity, TextInput, View, Keyboard, Text, Image } from "react-native";
 const search = require('../assets/search_icon.png');
 
-const SearchBar = ({ clicked, searchPhrase, setSearchPhrase, setClicked }) => {
+const SearchBar = ({ clicked, searchPhrase, setSearchPhrase, setClicked, placeholder }) => {
   return (
     <View
       style={{
@@ -17,7 +17,7 @@ const SearchBar = ({ clicked, searchPhrase, setSearchPhrase, setClicked }) => {
       }}>
       <TextInput
         placeholderTextColor={'#C2C2C2'}
-        placeholder={'Search Speaker here ...'}
+        placeholder={placeholder}
         style={{ padding: 5, flex: 1 }}
         value={searchPhrase}
         onChangeText={setSearchPhrase}
