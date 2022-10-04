@@ -1,30 +1,38 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import {View, Text, Image} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { NavigationContext } from '@react-navigation/native';
 import logo from '../../assets/ceap-logo.png'
 import Button from './components/Button'
-import InputText from './components/InputText'
-import {isEmpty} from 'lodash'
+import {useForm} from 'react-hook-form';
+import Input from '../../components/form/Input';
+import PasswordInput from '../../components/form/PasswordInput';
+import { EMAIL_REGEX } from '../../../constants/regex';
 const backArrow = require('../../assets/left-arrow.png')
 
 export default function LoginScreen() {
     const navigation = useContext(NavigationContext);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [validateUsername, setValidateUsername] = useState(true);
-    const [validatePassword, setValidatePassword] = useState(true);
-
-    const ValidateCredentials = () => {
-        if (!isEmpty(email) && !isEmpty(password)) {
-          navigation.navigate('Home')
-
-        } else {
-          alert('Please enter your email or password!');
-          if(email == '')setValidateUsername(false);
-          if(password == '')setValidatePassword(false);
-        }
-      };
+    const {
+      control,
+      handleSubmit,
+      watch,
+      formState: {errors},
+    } = useForm();
+  
+    const onSubmit = async data => {
+      alert(JSON.stringify(data))
+      // const response = await new Auth().register({user: data});
+      // setLoader(true);
+      // if (response.ok) {
+      //   await AsyncStorage.setItem('token', response.data.token);
+      //   await refreshUser();
+      //   await refreshStudent();
+      //   await navigation.replace('Dashboard');
+      // } else {
+      //   alert(response?.data?.errors?.join('\n'));
+      // }
+      // setLoader(false);
+    };
   return (
     <>
       <TouchableOpacity onPress={() => navigation.goBack()} style={{backgroundColor: '#fff'}}>
@@ -42,28 +50,32 @@ export default function LoginScreen() {
           <Text style={{color: '#002E8A', fontSize: 24, fontWeight: 'bold', marginBottom: 10}}>Welcome back!</Text>
           <Text style={{color: '#9A9A9A', fontSize: 16, marginBottom: 30, fontWeight:'600'}}>Please sign in to your account</Text>
           <View>
-            <InputText
-              value={email}
-              placeholder={'E-mail address'}
-              placeholderTextColor={'#9A9A9A'}
-              onChangeText={text => {setEmail(text),setValidateUsername(true)}}
-              style={{borderWidth: 1, borderColor: validateUsername == true ? '#fff' : 'red'}}
+            <Input
+              name="email"
+              placeholder='Enter email here'
+              control={control}
+              errors={errors}
+              rules={{
+                required: true,
+                pattern: {value: EMAIL_REGEX, message: 'Invalid email'},
+              }}
             />
-            <InputText
-              value={password}
-              placeholder={'Password'}
-              placeholderTextColor={'#9A9A9A'}
-              onChangeText={text => {setPassword(text), setValidatePassword(true)}}
-              secureTextEntry={true}
-              style={{borderWidth: 1, borderColor: validatePassword == true ? '#fff' : 'red'}}
-              
+            <PasswordInput
+              name="password"
+              placeholder='Enter password here'
+              control={control}
+              errors={errors}
+              rules={{
+                required: true,
+                maxLength: 20,
+              }}
             />
             <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
               <Text style={{textAlign: 'right',color: '#002E8A', fontSize: 16, fontWeight: '200', marginBottom: 20}}>Forgot password?</Text>
             </TouchableOpacity>
           </View>
           <View style={{alignItems: 'center'}}>
-              <Button label={'Sign in'} onPress={() => ValidateCredentials()} />
+              <Button label={'Sign in'} onPress={handleSubmit(onSubmit)} />
           </View>
         </View>
       </View>
