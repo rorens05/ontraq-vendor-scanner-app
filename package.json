@@ -19,6 +19,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.34",
     "react": "17.0.2",
+    "react-hook-form": "^7.36.1",
     "react-native": "0.68.2",
     "react-native-calendars": "^1.1284.0",
     "react-native-date-picker": "^4.2.2",
