@@ -6,10 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Dimensions,
   StyleSheet,
 } from 'react-native';
-const {width, height} = Dimensions.get('screen');
 
 export default function PasswordInput({
   label,
@@ -69,13 +67,13 @@ export default function PasswordInput({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 6,
+    marginTop: 8,
   },
   label: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     color: '#17254A',
-    marginVertical: 6,
+    marginVertical: 8,
   },
   inputContainer: {
     borderWidth: 0.5,
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EEEEEE',
     marginBottom: 12,
     color: '#000',
-    paddingHorizontal: 6
+    paddingHorizontal: 8
   },
   textInput: {
     flex: 1, 
