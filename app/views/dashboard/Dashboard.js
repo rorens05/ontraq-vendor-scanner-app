@@ -1,18 +1,15 @@
 import React, {useContext, useState} from 'react';
 import {View, Text, ScrollView, Image} from 'react-native';
-import logo from '../../assets/ceap-logo.png';
 import upcoming from '../../assets/ceap-upcoming.png';
 import UpcomingEventItem from './components/UpcomingEventItem';
 import eventIcon from '../../assets/ceap-event.png';
-import burgerIcon from '../../assets/BurgerIcon.png';
 import EventItem from './components/EventItem';
-import SearchBar from '../../components/SearchBar';
+import SearchBar from '../../components/headers/SearchBar';
 import {NavigationContext} from '@react-navigation/native';
+import DashboardHeader from '../../components/headers/DashboardHeader';
 
 export default function Dashboard() {
   const navigation = useContext(NavigationContext);
-  const [searchPhrase, setSearchPhrase] = useState('');
-  const [clicked, setClicked] = useState(false);
   return (
     <View
       style={{
@@ -21,38 +18,7 @@ export default function Dashboard() {
         paddingHorizontal: 20,
       }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginTop: 20,
-          }}>
-          <Image
-            source={logo}
-            resizeMode="contain"
-            style={{width: 30, height: 30, marginHorizontal: 10}}
-          />
-          <View style={{flex: 1, marginTop: 5}}>
-            <SearchBar
-              placeholder={'Search events here ...'}
-              searchPhrase={searchPhrase}
-              setSearchPhrase={setSearchPhrase}
-              clicked={clicked}
-              setClicked={setClicked}
-            />
-          </View>
-          <Image
-            source={burgerIcon}
-            resizeMode="contain"
-            style={{
-              width: 30,
-              height: 20,
-              marginHorizontal: 10,
-              tintColor: '#535353',
-            }}
-          />
-        </View>
+        <DashboardHeader />
         <View style={{paddingBottom: 20}}>
           <Text
             style={{

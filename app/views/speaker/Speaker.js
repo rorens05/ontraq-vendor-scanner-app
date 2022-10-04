@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
-import { View, Text, ScrollView, TouchableOpacity, Image, Dimensions } from 'react-native'
-import SearchBar from '../../components/SearchBar'
-import areolaIcon from '../../assets/ceap-icon-areola.png'
-import caluzaIcon from '../../assets/ceap-icon-caluza.png'
-import arreIcon from '../../assets/ceap-icon-arre.png'
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from 'react-native';
+import SearchBar from '../../components/headers/SearchBar';
+import areolaIcon from '../../assets/ceap-icon-areola.png';
+import caluzaIcon from '../../assets/ceap-icon-caluza.png';
+import arreIcon from '../../assets/ceap-icon-arre.png';
 import SpeakerItem from './components/SpeakerItem';
-const { width, height } = Dimensions.get('screen');
+const {width, height} = Dimensions.get('screen');
 
 export default function Speaker() {
   const [searchPhrase, setSearchPhrase] = useState('');
@@ -24,64 +31,79 @@ export default function Speaker() {
     {
       name: 'Fr. Ramon Caluza',
       position: 'CEAP Region 1 Trustee',
-      image: caluzaIcon
+      image: caluzaIcon,
     },
     {
       name: 'Fr. Raymond Arre',
       position: 'CEAP Superintendent’s',
-      image: arreIcon
+      image: arreIcon,
     },
     {
       name: 'Fr. Odine Areola',
       position: 'CEAP Region 5 Trustee',
-      image: areolaIcon
+      image: areolaIcon,
     },
     {
       name: 'Fr. Ramon Caluza',
       position: 'CEAP Region 1 Trustee',
-      image: caluzaIcon
+      image: caluzaIcon,
     },
     {
       name: 'Fr. Raymond Arre',
       position: 'CEAP Superintendent’s',
-      image: arreIcon
+      image: arreIcon,
     },
     {
       name: 'Fr. Odine Areola',
       position: 'CEAP Region 5 Trustee',
-      image: areolaIcon
+      image: areolaIcon,
     },
     {
       name: 'Fr. Ramon Caluza',
       position: 'CEAP Region 1 Trustee',
-      image: caluzaIcon
+      image: caluzaIcon,
     },
     {
       name: 'Fr. Raymond Arre',
       position: 'CEAP Superintendent’s',
-      image: arreIcon
+      image: arreIcon,
     },
     {
       name: 'Fr. Odine Areola',
       position: 'CEAP Region 5 Trustee',
-      image: areolaIcon
+      image: areolaIcon,
     },
     {
       name: 'Fr. Ramon Caluza',
       position: 'CEAP Region 1 Trustee',
-      image: caluzaIcon
+      image: caluzaIcon,
     },
     {
       name: 'Fr. Raymond Arre',
       position: 'CEAP Superintendent’s',
-      image: arreIcon
+      image: arreIcon,
     },
   ];
   return (
-    <View style={{ flex: 1, backgroundColor: '#F8F8F8D1', paddingHorizontal: 20, paddingTop: 20, marginBottom: 70 }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#F8F8F8D1',
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        marginBottom: 70,
+      }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{}}>
-          <Text style={{ color: '#000000', fontSize: 24, fontWeight: 'bold', marginBottom: 24 }}>Speakers</Text>
+          <Text
+            style={{
+              color: '#000000',
+              fontSize: 24,
+              fontWeight: 'bold',
+              marginBottom: 24,
+            }}>
+            Speakers
+          </Text>
         </View>
         <SearchBar
           placeholder={'Search Speaker here ...'}
@@ -96,16 +118,15 @@ export default function Speaker() {
             flexDirection: 'row',
             flexWrap: 'wrap',
           }}>
-          {speakers.filter(item => item?.name
-            .toUpperCase()
-            .includes(searchPhrase.toUpperCase()))
+          {speakers
+            .filter(item =>
+              item?.name.toUpperCase().includes(searchPhrase.toUpperCase()),
+            )
             .map((item, key) => {
-              return (
-                <SpeakerItem key={key} item={item} />
-              );
+              return <SpeakerItem key={key} item={item} />;
             })}
         </View>
       </ScrollView>
     </View>
-  )
+  );
 }
