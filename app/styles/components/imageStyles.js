@@ -1,4 +1,4 @@
-import {ICON_TINT_COLOR} from '../colors';
+import {ICON_TINT_COLOR, PLACEHOLDER_COLOR} from '../colors';
 
 export default imageStyle = {
   mainLogo: {
@@ -23,5 +23,16 @@ export default imageStyle = {
   },
   icon_tint: {
     tintColor: ICON_TINT_COLOR,
+  },
+  searchIcon: {
+    width: 20,
+    height: 20,
+    tintColor: PLACEHOLDER_COLOR,
+  },
+  event_image: {
+    width: '100%',
+    height: 174,
+    borderTopRightRadius: 24,
+    borderTopLeftRadius: 24,
   },
 };

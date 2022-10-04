@@ -1,40 +1,22 @@
 import React, {useContext} from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {NavigationContext} from '@react-navigation/native';
+import styles from '../../../styles';
 
 export default function EventItem({image}) {
   const navigation = useContext(NavigationContext);
   return (
     <TouchableOpacity
+      activeOpacity={0.8}
       onPress={() => navigation.navigate('EventProfile', {image})}
-      style={{
-        height: 284,
-        width: "100%",
-        borderRadius: 24,
-        marginBottom: 10,
-        borderWidth: StyleSheet.hairlineWidth,
-        borderBottomColor: '#00000ae',
-        alignItems: 'center',
-      }}>
-      <Image
-        source={image}
-        style={{
-          width: "100%",
-          height: 174,
-          borderTopRightRadius: 24,
-          borderTopLeftRadius: 24,
-        }}
-      />
-      <View style={{marginTop: 20}}>
-        <Text style={{color: '#000000', fontSize: 24, fontWeight: 'bold'}}>
+      style={[styles.event_container, styles.mb_3]}>
+      <Image source={image} style={styles.event_image} />
+      <View style={styles.mt_5}>
+        <Text style={[styles.h1, styles.mb_2]}>
           {'CEAP Conference and Expo'}
         </Text>
-        <Text style={{color: '#D82E2E', fontSize: 12, fontWeight: 'bold'}}>
-          {'August 5, 2022'}
-        </Text>
-        <Text style={{color: '#000000', fontSize: 12, fontWeight: 'bold'}}>
-          {'Quezon City, Manila Philippines'}
-        </Text>
+        <Text style={[styles.h6, styles.text_danger]}>{'August 5, 2022'}</Text>
+        <Text style={styles.h6}>{'Quezon City, Manila Philippines'}</Text>
       </View>
     </TouchableOpacity>
   );

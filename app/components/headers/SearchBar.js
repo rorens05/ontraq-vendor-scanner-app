@@ -41,7 +41,7 @@ const SearchBar = ({
       />
       {clicked ? (
         <TouchableOpacity
-          style={{justifyContent: 'center', alignItems: 'center'}}
+          style={styles.flex_center}
           onPress={() => {
             setSearchPhrase('');
             Keyboard.dismiss();
@@ -54,7 +54,7 @@ const SearchBar = ({
           <Image
             source={search}
             resizeMode="contain"
-            style={{width: 20, height: 20, tintColor: PLACEHOLDER_COLOR}}
+            style={[styles.searchIcon]}
           />
         </View>
       )}

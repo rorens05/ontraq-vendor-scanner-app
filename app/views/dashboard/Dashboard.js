@@ -4,31 +4,19 @@ import upcoming from '../../assets/ceap-upcoming.png';
 import UpcomingEventItem from './components/UpcomingEventItem';
 import eventIcon from '../../assets/ceap-event.png';
 import EventItem from './components/EventItem';
-import SearchBar from '../../components/headers/SearchBar';
 import {NavigationContext} from '@react-navigation/native';
 import DashboardHeader from '../../components/headers/DashboardHeader';
+import MainContainer from '../../components/layout/MainContainer';
+import styles from '../../styles';
 
 export default function Dashboard() {
   const navigation = useContext(NavigationContext);
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#fff',
-        paddingHorizontal: 20,
-      }}>
+    <MainContainer>
       <ScrollView showsVerticalScrollIndicator={false}>
         <DashboardHeader />
-        <View style={{paddingBottom: 20}}>
-          <Text
-            style={{
-              color: '#000000',
-              fontSize: 24,
-              fontWeight: 'bold',
-              marginBottom: 24,
-            }}>
-            Upcoming Events
-          </Text>
+        <View style={styles.pb_5}>
+          <Text style={[styles.h1, styles.my_5]}>Upcoming Events</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <UpcomingEventItem
               image={upcoming}
@@ -51,18 +39,10 @@ export default function Dashboard() {
           </ScrollView>
         </View>
         <View>
-          <Text
-            style={{
-              color: '#000000',
-              fontSize: 24,
-              fontWeight: 'bold',
-              marginBottom: 12,
-            }}>
-            Events
-          </Text>
+          <Text style={[styles.h1, styles.my_5]}>Events</Text>
           <EventItem image={eventIcon} />
         </View>
       </ScrollView>
-    </View>
+    </MainContainer>
   );
 }
