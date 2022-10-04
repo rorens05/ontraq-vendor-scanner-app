@@ -7,6 +7,10 @@ import DatePickerMonth from './components/DatePicker';
 import moment from 'moment';
 import Loader from '../../components/FullscreenActivityIndicator';
 import logo from '../../assets/ceap-logo.png'
+import { useForm } from 'react-hook-form';
+import Input from '../../components/form/Input';
+import PasswordInput from '../../components/form/PasswordInput';
+import { EMAIL_REGEX, PHONE_REGEX } from '../../../constants/regex';
 
 const backArrow = require('../../assets/left-arrow.png')
 const birthdayIcon = require('../../assets/calendarIcon.png')
@@ -14,43 +18,31 @@ const birthdayIcon = require('../../assets/calendarIcon.png')
 export default function SignUp() {
   const navigation = useContext(NavigationContext);
   const [dateModal, setDateModal] = useState(false);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [address, setAddress] = useState('');
-  const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [number, setNumber] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [loader, setLoader] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const handleSignUp = async () => {
-    setLoader(true)
-    if(password === confirmPassword){
-      let data = {
-        firstname: firstName,
-        lastname: lastName,
-        address: address,
-        emailAddress: email,
-        birthDate: birthday,
-        phoneNumber: number,
-        password: password,
-      }
-      // let response = await new ContactAPI().addContact(schoolId, data)
-      if (true) {
-        // console.log({ response })
-        alert('Under Development')
-        setLoader(false)
-      } else {
-        alert('Under Development')
-        setLoader(false)
-      }
-    } else {
-      alert('Password does not match!')
-      setLoader(false)
-    }
-  }
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async data => {
+    alert(JSON.stringify(data))
+    // const response = await new Auth().register({user: data});
+    // setLoader(true);
+    // if (response.ok) {
+    //   await AsyncStorage.setItem('token', response.data.token);
+    //   await refreshUser();
+    //   await refreshStudent();
+    //   await navigation.replace('Dashboard');
+    // } else {
+    //   alert(response?.data?.errors?.join('\n'));
+    // }
+    // setLoader(false);
+  };
 
   return (
     <>
@@ -72,17 +64,21 @@ export default function SignUp() {
             <View style={{}}>
               <View style={{ flexDirection: 'row' }}>
                 <View style={{ flex: 1, marginRight: 10 }}>
-                  <RadiusTextInput
-                    value={firstName}
-                    placeholder={'First Name'}
-                    onChange={text => setFirstName(text)}
+                  <Input
+                    name="first_name"
+                    placeholder='Enter first name here'
+                    control={control}
+                    errors={errors}
+                    rules={{ required: true, maxLength: 20 }}
                   />
                 </View>
                 <View style={{ flex: 1, marginLeft: 10 }}>
-                  <RadiusTextInput
-                    value={lastName}
-                    placeholder={'Last Name'}
-                    onChange={text => setLastName(text)}
+                  <Input
+                    name="last_name"
+                    placeholder='Enter last name here'
+                    control={control}
+                    errors={errors}
+                    rules={{ required: true, maxLength: 20 }}
                   />
                 </View>
               </View>
@@ -96,40 +92,85 @@ export default function SignUp() {
                   withIcon={birthdayIcon}
                 />
               </TouchableOpacity>
-              <RadiusTextInput
-                value={address}
-                placeholder={'Address'}
-                onChange={text => setAddress(text)}
+              <Input
+                name="address"
+                placeholder='Address'
+                control={control}
+                errors={errors}
+                rules={{ required: true, maxLength: 20 }}
               />
-              <RadiusTextInput
-                value={email}
-                placeholder={'Email'}
-                onChange={text => setEmail(text)}
-                keyboardType='email-address'
+              <Input
+                name="email"
+                placeholder='Email'
+                control={control}
+                errors={errors}
+                rules={{
+                  required: true,
+                  pattern: {value: EMAIL_REGEX, message: 'Invalid email'},
+                }}
               />
-              <RadiusTextInput
-                value={number}
-                placeholder={'Mobile Number'}
-                onChange={text => setNumber(text)}
-                keyboardType='number-pad'
+              <Input
+                name="mobile_number"
+                placeholder='Mobile Number'
+                control={control}
+                errors={errors}
+                rules={{
+                  required: true,
+                  pattern: {
+                    value: PHONE_REGEX,
+                    message: 'Invalid phone number e.g.(09123456789)',
+                  },
+                }}
               />
-              <RadiusTextInput
-                value={password}
-                placeholder={'Password'}
-                onChange={text => setPassword(text)}
-                secureTextEntry={true}
+              <PasswordInput
+                name="password"
+                placeholder='Password'
+                control={control}
+                errors={errors}
+                rules={{
+                  required: true,
+                  maxLength: 20,
+                  validate: {
+                    value: async value => {
+                      if (value === watch('confirm_password')) {
+                        if (errors['confirm_password'] != null) {
+                          errors['confirm_password'] = null;
+                        }
+                        return true;
+                      } else {
+                        return 'Password mismatch';
+                      }
+                    },
+                  },
+                }}
               />
-              <RadiusTextInput
-                value={confirmPassword}
-                placeholder={'Re-password'}
-                onChange={text => setConfirmPassword(text)}
-                secureTextEntry={true}
+              <PasswordInput
+                name="confirm_password"
+                placeholder='Re-Password'
+                control={control}
+                errors={errors}
+                rules={{
+                  required: true,
+                  maxLength: 20,
+                  validate: {
+                    value: async value => {
+                      if (value === watch('password')) {
+                        if (errors['password'] != null) {
+                          errors['password'] = null;
+                        }
+                        return true;
+                      } else {
+                        return 'Password mismatch';
+                      }
+                    },
+                  },
+                }}
               />
             </View>
-            <View style={{ flex: 1, paddingBottom: 30, alignSelf: 'center'}}>
+            <View style={{ flex: 1, paddingBottom: 30, alignSelf: 'center' }}>
               <Button
                 label={'Sign up'}
-                onPress={() => handleSignUp()}
+                onPress={handleSubmit(onSubmit)}
               />
             </View>
           </ScrollView>

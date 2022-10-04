@@ -6,47 +6,37 @@ import Button from './Button';
 import Loader from '../../../components/FullscreenActivityIndicator';
 import { isEmpty } from 'lodash'
 import ProfileHeader from './ProfileHeader';
+import { useForm } from 'react-hook-form';
+import Input from '../../../components/form/Input';
+import PasswordInput from '../../../components/form/PasswordInput';
+import { EMAIL_REGEX, PHONE_REGEX } from '../../../../constants/regex';
 const backArrow = require('../../../assets/left-arrow.png');
 export default function AccountSettings() {
   const navigation = useContext(NavigationContext);
-
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [validatePassword, setValidatePassword] = useState(true);
-  const [validateMobileNumber, setValidateMobileNumber] = useState(true);
-  const [validateEmail, setValidateEmail] = useState(true);
   const [loader, setLoader] = useState(false);
   const [image, setImage] = useState(null);
 
-  const ValidateCredentials = () => {
-    if (!isEmpty(mobileNumber) && !isEmpty(email) && !isEmpty(password)) {
-      handleUpdateAccount()
-    } else {
-      alert('Please fill up the fields');
-      if (mobileNumber == '') setValidateMobileNumber(false);
-      if (email == '') setValidateEmail(false);
-      if (password == '') setValidatePassword(false);
-    }
-  };
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  const handleUpdateAccount = async () => {
-    setLoader(true)
-    let data = {
-      mobileNumber,
-      email,
-      password,
-    }
-    // let response = await new ContactAPI().addContact(schoolId, data)
-    if (true) {
-      // console.log({ response })
-      alert('Under Development')
-      setLoader(false)
-    } else {
-      alert('Under Development')
-      setLoader(false)
-    }
-  }
+  const handleUpdateAccount = async data => {
+    alert(JSON.stringify(data))
+    // const response = await new Auth().register({user: data});
+    // setLoader(true);
+    // if (response.ok) {
+    //   await AsyncStorage.setItem('token', response.data.token);
+    //   await refreshUser();
+    //   await refreshStudent();
+    //   await navigation.replace('Dashboard');
+    // } else {
+    //   alert(response?.data?.errors?.join('\n'));
+    // }
+    // setLoader(false);
+  };
 
   return (
     <>
@@ -61,34 +51,57 @@ export default function AccountSettings() {
         <ScrollView>
           <ProfileHeader name={'Joan Dela Cruz'} position={'Attendees'} image={image} setImage={setImage} />
           <View style={{ marginHorizontal: 20 }}>
-            <RoundTextInput
-              value={mobileNumber}
-              placeholder={'Mobile Number'}
-              placeholderTextColor={'#C5C5C5'}
-              onChangeText={text => { setMobileNumber(text), setValidateMobileNumber(true) }}
-              style={{ borderWidth: 1, borderColor: validateMobileNumber == true ? '#fff' : 'red' }}
-              keyboardType='number-pad'
+            <Input
+              name="mobile_number"
+              label='Mobile Number'
+              placeholder='Mobile Number'
+              control={control}
+              errors={errors}
+              rules={{
+                required: true,
+                pattern: {
+                  value: PHONE_REGEX,
+                  message: 'Invalid phone number e.g.(09123456789)',
+                },
+              }}
             />
-            <RoundTextInput
-              value={email}
-              placeholder={'Email Address'}
-              placeholderTextColor={'#C5C5C5'}
-              onChangeText={text => { setEmail(text), setValidateEmail(true) }}
-              style={{ borderWidth: 1, borderColor: validateEmail == true ? '#fff' : 'red' }}
-              keyboardType='email-address'
+            <Input
+              name="email"
+              label='Email'
+              placeholder='Email'
+              control={control}
+              errors={errors}
+              rules={{
+                required: true,
+                pattern: {value: EMAIL_REGEX, message: 'Invalid email'},
+              }}
             />
-            <RoundTextInput
-              value={password}
-              placeholder={'Password'}
-              placeholderTextColor={'#C5C5C5'}
-              onChangeText={text => { setPassword(text), setValidatePassword(true) }}
-              style={{ borderWidth: 1, borderColor: validatePassword == true ? '#fff' : 'red' }}
-              secureTextEntry={true}
+            <PasswordInput
+              name="password"
+              label='Current Password'
+              placeholder='Current password'
+              control={control}
+              errors={errors}
+              rules={{
+                required: true,
+                maxLength: 20,
+              }}
+            />
+            <PasswordInput
+              name="confirm_password"
+              label='New Password'
+              placeholder='New Password'
+              control={control}
+              errors={errors}
+              rules={{
+                required: true,
+                maxLength: 20,
+              }}
             />
             <View style={{ paddingVertical: 30, alignSelf: 'center' }}>
               <Button
                 label={'Update Account'}
-                onPress={() => ValidateCredentials()}
+                onPress={handleSubmit(handleUpdateAccount)}
               />
             </View>
           </View>

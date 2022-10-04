@@ -8,6 +8,8 @@ import Button from './Button';
 import Loader from '../../../components/FullscreenActivityIndicator';
 import { isEmpty } from 'lodash'
 import ProfileHeader from './ProfileHeader';
+import { useForm } from 'react-hook-form';
+import Input from '../../../components/form/Input';
 const backArrow = require('../../../assets/left-arrow.png');
 export default function GeneralInformation() {
   const navigation = useContext(NavigationContext);
@@ -24,36 +26,27 @@ export default function GeneralInformation() {
   const [loader, setLoader] = useState(false);
   const [image, setImage] = useState(null);
 
-  const ValidateCredentials = () => {
-    if (!isEmpty(firstName) && !isEmpty(lastName) && !isEmpty(address) && !isEmpty(birthday)) {
-      handleEdit()
-    } else {
-      alert('Please fill up the fields');
-      if (firstName == '') setValidateFirstName(false);
-      if (lastName == '') setValidateLastName(false);
-      if (address == '') setValidateAddress(false);
-      if (birthday == '') setValidateBirthday(false);
-    }
-  };
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-  const handleEdit = async () => {
-    setLoader(true)
-    let data = {
-      firstName,
-      lastName,
-      address,
-      birthday,
-    }
-    // let response = await new ContactAPI().addContact(schoolId, data)
-    if (true) {
-      // console.log({ response })
-      alert('Under Development')
-      setLoader(false)
-    } else {
-      alert('Under Development')
-      setLoader(false)
-    }
-  }
+  const onSubmit = async data => {
+    alert(JSON.stringify(data))
+    // const response = await new Auth().register({user: data});
+    // setLoader(true);
+    // if (response.ok) {
+    //   await AsyncStorage.setItem('token', response.data.token);
+    //   await refreshUser();
+    //   await refreshStudent();
+    //   await navigation.replace('Dashboard');
+    // } else {
+    //   alert(response?.data?.errors?.join('\n'));
+    // }
+    // setLoader(false);
+  };
 
   return (
     <>
@@ -69,26 +62,29 @@ export default function GeneralInformation() {
 
           <ProfileHeader name={'Joan Dela Cruz'} position={'Attendees'} image={image} setImage={setImage} />
           <View style={{ marginHorizontal: 20 }}>
-            <RoundTextInput
-              value={firstName}
-              placeholder={'First Name'}
-              placeholderTextColor={'#C5C5C5'}
-              onChangeText={text => { setFirstName(text), setValidateFirstName(true) }}
-              style={{ borderWidth: 1, borderColor: validateFirstName == true ? '#fff' : 'red' }}
+            <Input
+              name='first_name'
+              label='First Name'
+              placeholder='Enter first name here'
+              control={control}
+              errors={errors}
+              rules={{ required: true, maxLength: 20 }}
             />
-            <RoundTextInput
-              value={lastName}
-              placeholder={'Last Name'}
-              placeholderTextColor={'#C5C5C5'}
-              onChangeText={text => { setLastName(text), setValidateLastName(true) }}
-              style={{ borderWidth: 1, borderColor: validateLastName == true ? '#fff' : 'red' }}
+            <Input
+              name="last_name"
+              label='Last Name'
+              placeholder='Enter last name here'
+              control={control}
+              errors={errors}
+              rules={{ required: true, maxLength: 20 }}
             />
-            <RoundTextInput
-              value={address}
-              placeholder={'Address'}
-              placeholderTextColor={'#C5C5C5'}
-              onChangeText={text => { setAddress(text), setValidateAddress(true) }}
-              style={{ borderWidth: 1, borderColor: validateAddress == true ? '#fff' : 'red' }}
+            <Input
+              name='address'
+              label='Address'
+              placeholder='Address'
+              control={control}
+              errors={errors}
+              rules={{ required: true, maxLength: 20 }}
             />
 
             <TouchableOpacity
@@ -107,7 +103,7 @@ export default function GeneralInformation() {
             <View style={{ paddingVertical: 30, alignSelf: 'center' }}>
               <Button
                 label={'Edit profile'}
-                onPress={() => ValidateCredentials()}
+                onPress={handleSubmit(onSubmit)}
               />
             </View>
           </View>

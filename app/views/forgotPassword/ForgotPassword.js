@@ -5,20 +5,32 @@ import { NavigationContext } from '@react-navigation/native';
 import InputText from '../login/components/InputText';
 import { isEmpty } from 'lodash'
 import Button from '../login/components/Button';
+import Input from '../../components/form/Input';
+import { EMAIL_REGEX } from '../../../constants/regex';
+import {useForm} from 'react-hook-form';
 const backArrow = require('../../assets/left-arrow.png')
 export default function ForgotPassword() {
   const navigation = useContext(NavigationContext);
-  const [email, setEmail] = useState('');
-  const [validateUsername, setValidateUsername] = useState(true);
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: {errors},
+  } = useForm();
 
-  const ValidateCredentials = () => {
-    if (!isEmpty(email)) {
-      alert('Under Development');
-
-    } else {
-      alert('Please enter your email');
-      if (email == '') setValidateUsername(false);
-    }
+  const onSubmit = async data => {
+    alert(JSON.stringify(data))
+    // const response = await new Auth().register({user: data});
+    // setLoader(true);
+    // if (response.ok) {
+    //   await AsyncStorage.setItem('token', response.data.token);
+    //   await refreshUser();
+    //   await refreshStudent();
+    //   await navigation.replace('Dashboard');
+    // } else {
+    //   alert(response?.data?.errors?.join('\n'));
+    // }
+    // setLoader(false);
   };
 
   return (
@@ -38,17 +50,20 @@ export default function ForgotPassword() {
           <Text style={{ color: '#002E8A', fontSize: 24, fontWeight: 'bold', marginBottom: 10 }}>Forgot password?</Text>
           <Text style={{ color: '#9A9A9A', fontSize: 16, marginBottom: 10 }}>Please enter your email address below</Text>
           <View style={{ marginBottom: 10 }}>
-            <InputText
-              value={email}
-              placeholder={'E-mail address'}
-              placeholderTextColor={'#9A9A9A'}
-              onChangeText={text => { setEmail(text), setValidateUsername(true) }}
-              style={{ borderWidth: 1, borderColor: validateUsername == true ? '#fff' : 'red' }}
+            <Input
+              name="email"
+              placeholder='E-mail address'
+              control={control}
+              errors={errors}
+              rules={{
+                required: true,
+                pattern: {value: EMAIL_REGEX, message: 'Invalid email'},
+              }}
             />
           </View>
         </View>
         <View style={{ alignItems: 'center' }}>
-          <Button label={'SEND ACCESS CODE'} onPress={() => ValidateCredentials()} />
+          <Button label={'SEND ACCESS CODE'} onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
     </>
