@@ -10,6 +10,7 @@ import logo from '../../assets/ceap-logo.png'
 import { useForm } from 'react-hook-form';
 import Input from '../../components/form/Input';
 import PasswordInput from '../../components/form/PasswordInput';
+import { EMAIL_REGEX, PHONE_REGEX } from '../../../constants/regex';
 
 const backArrow = require('../../assets/left-arrow.png')
 const birthdayIcon = require('../../assets/calendarIcon.png')
@@ -103,14 +104,23 @@ export default function SignUp() {
                 placeholder='Email'
                 control={control}
                 errors={errors}
-                rules={{ required: true, maxLength: 20 }}
+                rules={{
+                  required: true,
+                  pattern: {value: EMAIL_REGEX, message: 'Invalid email'},
+                }}
               />
               <Input
                 name="mobile_number"
                 placeholder='Mobile Number'
                 control={control}
                 errors={errors}
-                rules={{ required: true, maxLength: 20 }}
+                rules={{
+                  required: true,
+                  pattern: {
+                    value: PHONE_REGEX,
+                    message: 'Invalid phone number e.g.(09123456789)',
+                  },
+                }}
               />
               <PasswordInput
                 name="password"

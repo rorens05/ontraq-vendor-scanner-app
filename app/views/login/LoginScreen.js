@@ -27,7 +27,7 @@ export default function LoginScreen() {
       //   await AsyncStorage.setItem('token', response.data.token);
       //   await refreshUser();
       //   await refreshStudent();
-      //   await navigation.replace('Dashboard');
+        await navigation.replace('Home');
       // } else {
       //   alert(response?.data?.errors?.join('\n'));
       // }

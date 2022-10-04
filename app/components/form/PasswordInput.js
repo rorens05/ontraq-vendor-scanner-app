@@ -31,10 +31,10 @@ export default function PasswordInput({
   const error = errors[name];
 
   return (
-    <View>
+    <View style={styles.container}>
       {label &&
         <Text
-          style={styles.container}>
+          style={styles.label}>
           {label}
         </Text>
       }
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#707070',
-    marginVertical: 12,
+    color: '#17254A',
+    marginVertical: 6,
   },
   inputContainer: {
     borderWidth: 0.5,
