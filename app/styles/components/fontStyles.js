@@ -1,4 +1,4 @@
-import {BLACK, COLOR_DANGER} from '../colors';
+import {BLACK, COLOR_DANGER, WHITE} from '../colors';
 
 export default fontStyles = {
   h1: {
@@ -35,4 +35,12 @@ export default fontStyles = {
   text_danger: {
     color: COLOR_DANGER,
   },
+  text_white: {
+    color: WHITE
+  },
+  upcoming_event_label: {
+    color: '#fff', 
+    fontSize: 16, 
+    fontWeight: '300',
+  }
 };

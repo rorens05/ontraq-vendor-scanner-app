@@ -39,4 +39,8 @@ export default layoutStyles = {
     borderBottomColor: '#00000ae',
     alignItems: 'center',
   },
+  upcoming_event_container: {
+    position: 'absolute', 
+    bottom: 0,
+  }
 };

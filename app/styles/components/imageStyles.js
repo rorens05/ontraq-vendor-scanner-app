@@ -35,4 +35,9 @@ export default imageStyle = {
     borderTopRightRadius: 24,
     borderTopLeftRadius: 24,
   },
+  upcoming_event_image: {
+    width: 160, 
+    height: 200, 
+    borderRadius: 15,
+  },
 };
