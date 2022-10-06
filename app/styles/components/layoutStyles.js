@@ -1,5 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
-import {INPUT_TEXT_BACKGROUND_COLOR, PLACEHOLDER_COLOR, WHITE} from '../colors';
+import {ARROW_COLOR, INPUT_TEXT_BACKGROUND_COLOR, PLACEHOLDER_COLOR, WHITE} from '../colors';
 const { width, height } = Dimensions.get('screen');
 
 export default layoutStyles = {
@@ -73,5 +73,17 @@ export default layoutStyles = {
     width: 150, 
     alignItems: 'center', 
     borderRadius: 10,
-  }
+  },
+  align_center_justify_space_evenly: {
+    justifyContent: 'space-evenly', 
+    alignItems: 'center',
+  },
+  align_items_center: {
+    alignItems: 'center',
+  },
+  hr_line: {
+    height: 2, 
+    width: 100, 
+    backgroundColor: ARROW_COLOR,
+  },
 };

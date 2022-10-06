@@ -1,4 +1,4 @@
-import {BLACK, COLOR_DANGER, WHITE} from '../colors';
+import {ARROW_COLOR, BLACK, COLOR_DANGER, GRAY, WHITE} from '../colors';
 
 export default fontStyles = {
   h1: {
@@ -41,6 +41,13 @@ export default fontStyles = {
   text_black: {
     color: BLACK
   },
+  text_blue: {
+    color: ARROW_COLOR
+  },
+  text_gray: {
+    color: GRAY
+  },
+
   profile_description: {
     color: '#fff', 
     fontSize: 16, 
