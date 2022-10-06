@@ -1,14 +1,15 @@
-import React, { useState, useContext } from 'react'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
-import logo from '../../assets/ceap-logo.png'
-import { NavigationContext } from '@react-navigation/native';
+import React, {useState, useContext} from 'react';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
+import logo from '../../assets/ceap-logo.png';
+import {NavigationContext} from '@react-navigation/native';
 import InputText from '../login/components/InputText';
-import { isEmpty } from 'lodash'
+import {isEmpty} from 'lodash';
 import Button from '../login/components/Button';
 import Input from '../../components/form/Input';
-import { EMAIL_REGEX } from '../../../constants/regex';
+import {EMAIL_REGEX} from '../../../constants/regex';
 import {useForm} from 'react-hook-form';
-const backArrow = require('../../assets/left-arrow.png')
+import MainContainer from '../../components/layout/MainContainer';
+const backArrow = require('../../assets/left-arrow.png');
 export default function ForgotPassword() {
   const navigation = useContext(NavigationContext);
   const {
@@ -19,7 +20,7 @@ export default function ForgotPassword() {
   } = useForm();
 
   const onSubmit = async data => {
-    alert(JSON.stringify(data))
+    alert(JSON.stringify(data));
     // const response = await new Auth().register({user: data});
     // setLoader(true);
     // if (response.ok) {
@@ -34,25 +35,45 @@ export default function ForgotPassword() {
   };
 
   return (
-    <>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={{ backgroundColor: '#fff' }}>
+    <MainContainer>
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{backgroundColor: '#fff'}}>
         <Image
           source={backArrow}
-          resizeMode='contain'
-          style={{ height: 25, width: 25, marginHorizontal: 25, marginVertical: 20, tintColor: '#002E8A' }}
+          resizeMode="contain"
+          style={{
+            height: 25,
+            width: 25,
+            marginVertical: 20,
+            tintColor: '#002E8A',
+          }}
         />
       </TouchableOpacity>
-      <View style={{ flex: 1, backgroundColor: '#fff' }}>
-        <View style={{ paddingVertical: 50 }}>
-          <Image source={logo} style={{ width: 200, height: 200, alignSelf: 'center' }} />
+      <View style={{flex: 1, backgroundColor: '#fff'}}>
+        <View style={{paddingVertical: 50}}>
+          <Image
+            source={logo}
+            style={{width: 200, height: 200, alignSelf: 'center'}}
+          />
         </View>
-        <View style={{ paddingHorizontal: 20 }}>
-          <Text style={{ color: '#002E8A', fontSize: 24, fontWeight: 'bold', marginBottom: 10 }}>Forgot password?</Text>
-          <Text style={{ color: '#9A9A9A', fontSize: 16, marginBottom: 10 }}>Please enter your email address below</Text>
-          <View style={{ marginBottom: 10 }}>
+        <View style={{paddingHorizontal: 20}}>
+          <Text
+            style={{
+              color: '#002E8A',
+              fontSize: 24,
+              fontWeight: 'bold',
+              marginBottom: 10,
+            }}>
+            Forgot password?
+          </Text>
+          <Text style={{color: '#9A9A9A', fontSize: 16, marginBottom: 10}}>
+            Please enter your email address below
+          </Text>
+          <View style={{marginBottom: 10}}>
             <Input
               name="email"
-              placeholder='E-mail address'
+              placeholder="E-mail address"
               control={control}
               errors={errors}
               rules={{
@@ -62,10 +83,10 @@ export default function ForgotPassword() {
             />
           </View>
         </View>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{alignItems: 'center'}}>
           <Button label={'SEND ACCESS CODE'} onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
-    </>
-  )
+    </MainContainer>
+  );
 }

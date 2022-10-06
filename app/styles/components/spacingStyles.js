@@ -1,8 +1,3 @@
-export default spacingStyles = {
-  ...margins,
-  ...paddings,
-};
-
 const margins = {
   m_1: {
     margin: 4,
@@ -229,4 +224,9 @@ const paddings = {
   px_5: {
     paddingHorizontal: 20,
   },
+};
+
+export default spacingStyles = {
+  ...margins,
+  ...paddings,
 };
