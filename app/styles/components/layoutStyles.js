@@ -44,7 +44,7 @@ export default layoutStyles = {
     position: 'absolute', 
     bottom: 0,
   },
-  upcoming_event_profile_container: {
+  profile_container: {
     position: 'absolute', 
     zIndex: 1,
   },
@@ -66,6 +66,12 @@ export default layoutStyles = {
   },
   attendess_progrees: {
     backgroundColor: '#002E8A',
+    borderRadius: 10,
+  },
+  button: {
+    backgroundColor: '#103E78', 
+    width: 150, 
+    alignItems: 'center', 
     borderRadius: 10,
   }
 };

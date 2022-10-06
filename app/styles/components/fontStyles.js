@@ -41,17 +41,17 @@ export default fontStyles = {
   text_black: {
     color: BLACK
   },
-  upcoming_event_label: {
+  profile_description: {
     color: '#fff', 
     fontSize: 16, 
     fontWeight: '300',
   },
-  upcoming_event_profile_title: {
+  profile_title: {
     color: BLACK, 
     fontSize: 32, 
     fontWeight: 'bold'
   },
-  upcoming_event_profile_date: {
+  profile_date: {
     color: COLOR_DANGER, 
     fontSize: 16, 
     fontWeight: 'bold'
@@ -64,5 +64,9 @@ export default fontStyles = {
     top: '10%',
     fontWeight: '500',
     color: WHITE,
+  },
+  button_label:{
+    color: '#fff', 
+    fontWeight: '500',
   }
 };

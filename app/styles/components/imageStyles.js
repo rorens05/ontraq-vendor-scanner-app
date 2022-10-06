@@ -36,6 +36,10 @@ export default imageStyle = {
     width, 
     height: 250
   },
+  variant_width_height_by_percent: {
+    width: '100%', 
+    height: '100%'
+  },
   icon_tint: {
     tintColor: ICON_TINT_COLOR,
   },

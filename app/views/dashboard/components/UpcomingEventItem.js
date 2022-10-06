@@ -10,7 +10,7 @@ export default function UpcomingEventItem({image, onPress }) {
         <View style={styles.upcoming_event_container}>
           <View style={styles.p_3}>
             <Text style={[styles.h4, styles.text_white]}>August 23</Text>
-            <Text style={styles.upcoming_event_label}>Collaborative Art Clinic</Text>
+            <Text style={styles.profile_description}>Collaborative Art Clinic</Text>
           </View>
         </View>
       </ImageBackground>
