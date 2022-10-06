@@ -38,9 +38,31 @@ export default fontStyles = {
   text_white: {
     color: WHITE
   },
+  text_black: {
+    color: BLACK
+  },
   upcoming_event_label: {
     color: '#fff', 
     fontSize: 16, 
     fontWeight: '300',
+  },
+  upcoming_event_profile_title: {
+    color: BLACK, 
+    fontSize: 32, 
+    fontWeight: 'bold'
+  },
+  upcoming_event_profile_date: {
+    color: COLOR_DANGER, 
+    fontSize: 16, 
+    fontWeight: 'bold'
+  },
+  attendess_label: {
+    position: 'absolute',
+    alignSelf: 'center',
+    fontSize: 16,
+    textAlign: 'center',
+    top: '10%',
+    fontWeight: '500',
+    color: WHITE,
   }
 };

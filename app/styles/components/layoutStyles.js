@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {INPUT_TEXT_BACKGROUND_COLOR, PLACEHOLDER_COLOR, WHITE} from '../colors';
+const { width, height } = Dimensions.get('screen');
 
 export default layoutStyles = {
   bg_white: {
@@ -42,5 +43,29 @@ export default layoutStyles = {
   upcoming_event_container: {
     position: 'absolute', 
     bottom: 0,
+  },
+  upcoming_event_profile_container: {
+    position: 'absolute', 
+    zIndex: 1,
+  },
+  upcoming_event_profile_image_container: {
+    position: 'absolute', 
+    zIndex: 1, 
+    alignSelf: 'center',
+  },
+  upcoming_event_profile_info_container: {
+    borderTopLeftRadius: 20, 
+    borderTopRightRadius: 20, 
+    marginTop: -20, 
+    backgroundColor: WHITE
+  },
+  attendess_container: {
+    width: width * 0.8,
+    backgroundColor: '#002E8A24',
+    borderRadius: 10,
+  },
+  attendess_progrees: {
+    backgroundColor: '#002E8A',
+    borderRadius: 10,
   }
 };

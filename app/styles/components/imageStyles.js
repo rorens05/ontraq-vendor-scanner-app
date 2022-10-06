@@ -1,4 +1,7 @@
-import {ICON_TINT_COLOR, PLACEHOLDER_COLOR} from '../colors';
+import {ARROW_COLOR, ICON_TINT_COLOR, PLACEHOLDER_COLOR} from '../colors';
+import { Dimensions } from 'react-native'
+const { width, height } = Dimensions.get('screen');
+
 
 export default imageStyle = {
   mainLogo: {
@@ -17,9 +20,21 @@ export default imageStyle = {
     width: 30,
     height: 30,
   },
+  variant_25_25: {
+    height: 25, 
+    width: 25
+  },
   variant_30_20: {
     width: 30,
     height: 20,
+  },
+  variant_200_200: {
+    width: 200,
+    height: 200,
+  },
+  variant_width_250: {
+    width, 
+    height: 250
   },
   icon_tint: {
     tintColor: ICON_TINT_COLOR,
@@ -40,4 +55,8 @@ export default imageStyle = {
     height: 200, 
     borderRadius: 15,
   },
+  arrow_color: {
+    tintColor: ARROW_COLOR,
+  },
+  
 };

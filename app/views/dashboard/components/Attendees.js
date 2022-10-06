@@ -1,40 +1,22 @@
 import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
-const { width, height } = Dimensions.get('screen');
-
+import { View, Text } from 'react-native';
+import styles from '../../../styles';
 
 export default function Attendees({ attend, max }) {
   return (
     <View
-      style={{
-        width: width * 0.8,
-        backgroundColor: '#002E8A24',
-        borderRadius: 10,
-      }}>
+      style={styles.attendess_container}>
       <View
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#002E8A',
-          paddingVertical: 5,
+        style={[styles.flex_center, styles.py_1, styles.attendess_progrees,{
           width: `${Math.round(
             (attend / max) * 100,
           )}%`,
-          borderRadius: 10,
-        }}>
+        }]}>
         <Text> </Text>
       </View>
       <Text
-        style={{
-          position: 'absolute',
-          alignSelf: 'center',
-          fontSize: 16,
-          textAlign: 'center',
-          top: '10%',
-          fontWeight: '500',
-          color: '#fff',
-        }}>
-        {`10 Attendees`}
+        style={styles.attendess_label}>
+        {`${attend} Attendees`}
       </Text>
     </View>
   )
