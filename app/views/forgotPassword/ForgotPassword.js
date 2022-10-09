@@ -1,15 +1,14 @@
-import React, {useState, useContext} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import React, {useContext} from 'react';
+import {View, Text, Image} from 'react-native';
 import logo from '../../assets/ceap-logo.png';
 import {NavigationContext} from '@react-navigation/native';
-import InputText from '../login/components/InputText';
-import {isEmpty} from 'lodash';
 import Button from '../login/components/Button';
 import Input from '../../components/form/Input';
 import {EMAIL_REGEX} from '../../../constants/regex';
 import {useForm} from 'react-hook-form';
 import MainContainer from '../../components/layout/MainContainer';
-const backArrow = require('../../assets/left-arrow.png');
+import BackButton from '../../components/BackButton';
+import styles from '../../styles';
 export default function ForgotPassword() {
   const navigation = useContext(NavigationContext);
   const {
@@ -36,41 +35,23 @@ export default function ForgotPassword() {
 
   return (
     <MainContainer>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={{backgroundColor: '#fff'}}>
-        <Image
-          source={backArrow}
-          resizeMode="contain"
-          style={{
-            height: 25,
-            width: 25,
-            marginVertical: 20,
-            tintColor: '#002E8A',
-          }}
-        />
-      </TouchableOpacity>
-      <View style={{flex: 1, backgroundColor: '#fff'}}>
-        <View style={{paddingVertical: 50}}>
+      <BackButton onPress={() => navigation.goBack()} />
+      <View style={styles.flex_1}>
+        <View style={[styles.py_5, styles.flex_center]}>
           <Image
             source={logo}
-            style={{width: 200, height: 200, alignSelf: 'center'}}
+            style={styles.mainLogo}
           />
         </View>
-        <View style={{paddingHorizontal: 20}}>
+        <View style={styles.px_5}>
           <Text
-            style={{
-              color: '#002E8A',
-              fontSize: 24,
-              fontWeight: 'bold',
-              marginBottom: 10,
-            }}>
+            style={[styles.mb_2, styles.h1, styles.text_blue]}>
             Forgot password?
           </Text>
-          <Text style={{color: '#9A9A9A', fontSize: 16, marginBottom: 10}}>
+          <Text style={[styles.mb_2, styles.h5, styles.text_gray]}>
             Please enter your email address below
           </Text>
-          <View style={{marginBottom: 10}}>
+          <View style={styles.mb_2}>
             <Input
               name="email"
               placeholder="E-mail address"
@@ -83,7 +64,7 @@ export default function ForgotPassword() {
             />
           </View>
         </View>
-        <View style={{alignItems: 'center'}}>
+        <View style={styles.flex_center}>
           <Button label={'SEND ACCESS CODE'} onPress={handleSubmit(onSubmit)} />
         </View>
       </View>
