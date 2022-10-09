@@ -12,6 +12,10 @@ export default imageStyle = {
     width: 50,
     height: 50,
   },
+  variant_144_144: {
+    width: 144,
+    height: 144,
+  },
   variant_50_50: {
     width: 50,
     height: 50,

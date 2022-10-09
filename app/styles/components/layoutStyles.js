@@ -13,6 +13,9 @@ export default layoutStyles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  flex_row: {
+    flexDirection: 'row'
+  },
   justify_content_space_evenly: {
     justifyContent: 'space-evenly'
   },
