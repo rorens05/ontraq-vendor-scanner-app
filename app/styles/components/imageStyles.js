@@ -1,4 +1,4 @@
-import {ARROW_COLOR, ICON_TINT_COLOR, PLACEHOLDER_COLOR} from '../colors';
+import {BLUE, ICON_TINT_COLOR, PLACEHOLDER_COLOR} from '../colors';
 import { Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('screen');
 
@@ -43,6 +43,9 @@ export default imageStyle = {
   icon_tint: {
     tintColor: ICON_TINT_COLOR,
   },
+  back_icon_tint: {
+    tintColor: BLUE,
+  },
   searchIcon: {
     width: 20,
     height: 20,
@@ -60,7 +63,6 @@ export default imageStyle = {
     borderRadius: 15,
   },
   arrow_color: {
-    tintColor: ARROW_COLOR,
+    tintColor: BLUE,
   },
-  
 };

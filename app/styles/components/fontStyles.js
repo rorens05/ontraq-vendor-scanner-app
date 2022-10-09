@@ -1,4 +1,4 @@
-import {ARROW_COLOR, BLACK, COLOR_DANGER, GRAY, WHITE} from '../colors';
+import {BLACK, BLUE, COLOR_DANGER, GRAY, WHITE} from '../colors';
 
 export default fontStyles = {
   h1: {
@@ -42,12 +42,11 @@ export default fontStyles = {
     color: BLACK
   },
   text_blue: {
-    color: ARROW_COLOR
+    color: BLUE,
   },
   text_gray: {
     color: GRAY
   },
-
   profile_description: {
     color: '#fff', 
     fontSize: 16, 
@@ -75,5 +74,10 @@ export default fontStyles = {
   button_label:{
     color: '#fff', 
     fontWeight: '500',
-  }
+  },
+  forgot_password: {
+    textAlign: 'right', 
+    fontSize: 16, 
+    fontWeight: '200'
+  },
 };

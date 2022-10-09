@@ -13,6 +13,9 @@ export default layoutStyles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  justify_content_space_evenly: {
+    justifyContent: 'space-evenly'
+  },
   x_icon: {
     color: PLACEHOLDER_COLOR,
     fontSize: 24,

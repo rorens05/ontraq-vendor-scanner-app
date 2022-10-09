@@ -5,4 +5,4 @@ export const WHITE = '#FFFFFF';
 export const BLACK = '#000000';
 export const GRAY = '#9A9A9A';
 export const COLOR_DANGER = '#D82E2E';
-export const ARROW_COLOR = '#002E8A';
+export const BLUE = '#002E8A';

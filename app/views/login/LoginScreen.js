@@ -8,7 +8,9 @@ import {useForm} from 'react-hook-form';
 import Input from '../../components/form/Input';
 import PasswordInput from '../../components/form/PasswordInput';
 import { EMAIL_REGEX } from '../../../constants/regex';
-const backArrow = require('../../assets/left-arrow.png')
+import MainContainer from '../../components/layout/MainContainer';
+import styles from '../../styles';
+import BackButton from '../../components/BackButton';
 
 export default function LoginScreen() {
     const navigation = useContext(NavigationContext);
@@ -34,21 +36,15 @@ export default function LoginScreen() {
       // setLoader(false);
     };
   return (
-    <>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={{backgroundColor: '#fff'}}>
-          <Image
-            source={backArrow}
-            resizeMode='contain'
-            style={{ height: 25, width: 25, marginHorizontal: 25, marginVertical: 20, tintColor: '#002E8A' }}
-          />
-      </TouchableOpacity>
-      <View style={{flex: 1, justifyContent: 'space-evenly', backgroundColor: '#fff'}}>
-        <View style={{alignSelf: 'center'}}>
-          <Image source={logo} style={{width: 200, height: 200}} />
+    <MainContainer>
+      <BackButton onPress={() => navigation.goBack()} />
+      <View style={[styles.flex_1, styles.justify_content_space_evenly]}>
+        <View style={styles.flex_center}>
+          <Image source={logo} style={styles.mainLogo} />
         </View>
-        <View style={{ paddingHorizontal: 30}}>
-          <Text style={{color: '#002E8A', fontSize: 24, fontWeight: 'bold', marginBottom: 10}}>Welcome back!</Text>
-          <Text style={{color: '#9A9A9A', fontSize: 16, marginBottom: 30, fontWeight:'600'}}>Please sign in to your account</Text>
+        <View style={{ }}>
+          <Text style={[styles.h1, styles.mb_2, styles.text_blue]}>Welcome back!</Text>
+          <Text style={[styles.mb_5, styles.h4, styles.text_gray]}>Please sign in to your account</Text>
           <View>
             <Input
               name="email"
@@ -71,7 +67,7 @@ export default function LoginScreen() {
               }}
             />
             <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-              <Text style={{textAlign: 'right',color: '#002E8A', fontSize: 16, fontWeight: '200', marginBottom: 20}}>Forgot password?</Text>
+              <Text style={[styles.text_blue, styles.mb_5, styles.forgot_password]}>Forgot password?</Text>
             </TouchableOpacity>
           </View>
           <View style={{alignItems: 'center'}}>
@@ -79,6 +75,6 @@ export default function LoginScreen() {
           </View>
         </View>
       </View>
-    </>
+    </MainContainer>
   )
 }
