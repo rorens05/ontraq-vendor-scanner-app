@@ -98,4 +98,8 @@ export default layoutStyles = {
     width: 100, 
     backgroundColor: ARROW_COLOR,
   },
+  bottom_navigation: {
+    position: 'absolute',
+    height: 70,
+  }
 };
