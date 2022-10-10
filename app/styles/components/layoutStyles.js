@@ -22,9 +22,6 @@ export default layoutStyles = {
   justify_content_space_between: {
     justifyContent: 'space-between'
   },
-  align_item_center: {
-    alignItems: 'center'
-  },
   x_icon: {
     color: PLACEHOLDER_COLOR,
     fontSize: 24,

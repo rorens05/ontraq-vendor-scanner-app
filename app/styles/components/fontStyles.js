@@ -80,4 +80,9 @@ export default fontStyles = {
     fontSize: 16, 
     fontWeight: '200'
   },
+  session_label: {
+    color: '#FF4F6B', 
+    fontSize: 20, 
+    fontWeight: 'bold',
+  }
 };

@@ -10,7 +10,7 @@ export default function Header({ }) {
   const navigation = useContext(NavigationContext);
   return (
     <View style={[styles.p_2, styles.bg_white]}>
-      <View style={[styles.flex_row, styles.align_item_center, styles.justify_content_space_between]}>
+      <View style={[styles.flex_row, styles.align_items_center, styles.justify_content_space_between]}>
         <View style={[styles.flex_row, styles.flex_center]}>
           <TouchableOpacity 
             onPress={() => navigation.navigate('Profile')}
