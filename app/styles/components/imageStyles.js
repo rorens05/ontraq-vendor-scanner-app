@@ -82,4 +82,14 @@ export default imageStyle = {
     height: 173, 
     borderRadius: 15,
   },
+  modal_size_success: { 
+    width: 340, 
+    height: 220, 
+    borderRadius: 15,
+  },
+  modal_size_failed: { 
+    width: 340, 
+    height: 250, 
+    borderRadius: 15,
+  },
 };

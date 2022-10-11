@@ -83,6 +83,12 @@ export default layoutStyles = {
     alignItems: 'center', 
     borderRadius: 10,
   },
+  modal_button: {
+    backgroundColor: '#103E78', 
+    width: 260, 
+    alignItems: 'center', 
+    borderRadius: 10,
+  },
   align_center_justify_space_evenly: {
     justifyContent: 'space-evenly', 
     alignItems: 'center',
