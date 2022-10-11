@@ -1,9 +1,13 @@
-import {BLUE, ICON_TINT_COLOR, PLACEHOLDER_COLOR} from '../colors';
+import {BLUE, ICON_TINT_COLOR, PLACEHOLDER_COLOR, WHITE} from '../colors';
 import { Dimensions } from 'react-native'
 const { width, height } = Dimensions.get('screen');
 
 
 export default imageStyle = {
+  variant_300_300: {
+    width: 300,
+    height: 300,
+  },
   mainLogo: {
     width: 200,
     height: 200,
@@ -49,7 +53,7 @@ export default imageStyle = {
     height: '100%'
   },
   icon_tint: {
-    tintColor: ICON_TINT_COLOR,
+    tintColor: WHITE,
   },
   back_icon_tint: {
     tintColor: BLUE,

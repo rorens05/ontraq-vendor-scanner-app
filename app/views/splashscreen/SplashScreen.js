@@ -7,7 +7,7 @@ const navigation = React.useContext(NavigationContext)
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('Login')
+      navigation.replace('QrScanner')
     }, 3000);
     return () => {
       clearTimeout(timer)
