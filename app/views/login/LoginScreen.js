@@ -39,7 +39,7 @@ export default function LoginScreen() {
     <MainContainer>
       <BackButton onPress={() => navigation.goBack()} />
       <View style={[styles.flex_1, styles.justify_content_space_evenly]}>
-        <View style={[styles.border_gray, styles.p_5, {padding: 20, borderRadius: 10}]}>
+        <View style={[styles.border_gray, styles.p_5, styles.border_10]}>
           <View style={[styles.flex_center]}>
             <Image source={logo} style={[styles.variant_70_70, styles.mb_5]} />
           </View>

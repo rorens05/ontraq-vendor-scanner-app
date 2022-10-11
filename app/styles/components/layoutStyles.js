@@ -114,8 +114,8 @@ export default layoutStyles = {
     borderWidth: 1,
     borderStyle: 'solid'
   },
-  border_15:{
-    borderRadius: 15,
+  border_10:{
+    borderRadius: 10,
   },
   qr_container: {
     position: 'absolute',
