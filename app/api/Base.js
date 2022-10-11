@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import AsyncStorage from '@react-native-community/async-storage';
-// import { DEV_API_URL } from '../../constants';
+import { DEV_API_URL } from '../../constants';
 
 export default class Base {
   constructor() { }

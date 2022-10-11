@@ -1,13 +1,32 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContext } from '@react-navigation/native';
 import React from 'react'
 import {View, Text} from 'react-native'
+import Scanner from '../../api/Scanner';
 
 export default function SplashScreen() {
 const navigation = React.useContext(NavigationContext)
 
+  const getDeviceInfo = async() => {
+    let code = await AsyncStorage.getItem('code')
+
+    if (code == null || code == ''){
+      return navigation.navigate('Login')
+    }
+
+    let response = await new Scanner().deviceInfo(code)
+    if(response.data == null){
+      return navigation.navigate('Login')
+    }
+
+    await AsyncStorage.setItem('code', code)
+    return navigation.navigate('QrScanner')
+
+  }
+
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.replace('Login')
+      getDeviceInfo();
     }, 3000);
     return () => {
       clearTimeout(timer)

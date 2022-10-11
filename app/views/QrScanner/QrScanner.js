@@ -3,6 +3,7 @@ import { View, Text, Image, Dimensions } from 'react-native'
 import { NavigationContext } from '@react-navigation/native';
 import styles from '../../styles';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import Scanner from '../../api/Scanner';
 
 export default function QrScanner() {
   const navigation = useContext(NavigationContext);
@@ -11,9 +12,24 @@ export default function QrScanner() {
   const handleScan = async e => {
     if (e) {
       setQrData(e?.data);
-      // setShowModal(!showModal);
+      verifyQRCode(e?.data);
     }
   };
+
+  const verifyQRCode = async (qr_token) => {
+    console.warn('Verifying QR Code', qr_token);
+    let code = await AsyncStorage.getItem('code')
+    let data = {
+      "qr_code": qr_token,
+      "scanner_code": code
+    }
+    let response = await new Scanner().verifyToken(data);
+    if(response.data == null){
+      // return navigation.navigate('LoginScreen')
+      alert('sample')
+    }
+  };
+
   return (
       <View style={styles.flex_1}>
         <QRCodeScanner
