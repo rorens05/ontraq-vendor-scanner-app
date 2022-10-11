@@ -12,10 +12,11 @@ export default function Login() {
   const navigation = useContext(NavigationContext);
   const [qrData, setQrData] = useState('');
 
-  const handleScan = async e => {
-    if (e) {
-      setQrData(e?.data);
-      // setShowModal(!showModal);
+  const hanldeReload = async e => {
+    if(true){
+      navigation.navigate('QrScanner')
+    }else{
+      alert('Under Development')
     }
   };
   return (
@@ -25,7 +26,7 @@ export default function Login() {
         <Text style={[styles.text_gray, {fontSize: 50, fontWeight: 'bold'}]}>QWE123</Text>
       </View>
       <View style={{alignItems: 'center'}}>
-        <Button label={'Reload'} onPress={() => navigation.navigate('LoginScreen')} />
+        <Button label={'Reload'} onPress={() => hanldeReload()} />
       </View>
     </View>
   )
