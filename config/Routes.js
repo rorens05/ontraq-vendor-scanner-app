@@ -5,6 +5,8 @@ import SplashScreen from '../app/views/splashscreen/SplashScreen';
 import Login from '../app/views/login/Login';
 import LoginScreen from '../app/views/login/LoginScreen';
 import QrScanner from '../app/views/QrScanner/QrScanner';
+import ModalSuccess from '../app/components/modal/ModalSuccess';
+import ModalFailed from '../app/components/modal/ModalFailed';
 
 const Stack = createStackNavigator();
 export default function Routes() {
@@ -44,6 +46,22 @@ export default function Routes() {
         <Stack.Screen
           name="QrScanner"
           component={QrScanner}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="ModalSuccess"
+          component={ModalSuccess}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="ModalFailed"
+          component={ModalFailed}
           options={{
             headerShown: false,
             gestureEnabled: false
