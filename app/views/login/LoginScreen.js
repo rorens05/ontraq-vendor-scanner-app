@@ -39,41 +39,44 @@ export default function LoginScreen() {
     <MainContainer>
       <BackButton onPress={() => navigation.goBack()} />
       <View style={[styles.flex_1, styles.justify_content_space_evenly]}>
-        <View style={styles.flex_center}>
-          <Image source={logo} style={styles.mainLogo} />
-        </View>
-        <View style={{ }}>
-          <Text style={[styles.h1, styles.mb_2, styles.text_blue]}>Welcome back!</Text>
-          <Text style={[styles.mb_5, styles.h4, styles.text_gray]}>Please sign in to your account</Text>
+        <View style={[styles.border_gray, styles.p_5, {padding: 20, borderRadius: 10}]}>
+          <View style={[styles.flex_center]}>
+            <Image source={logo} style={[styles.variant_70_70, styles.mb_5]} />
+          </View>
           <View>
+            <Text style={[styles.h1, styles.text_black]}>Juan Dela Cruz</Text>
+            <Text style={[styles.h6, styles.text_black]}>Name</Text>
+            <Text style={[styles.h1, styles.text_black]}>Quezon City, Philippines</Text>
+            <Text style={[styles.h6, styles.text_black]}>Address</Text>
+            <Text style={[styles.h1, styles.text_black]}>000-0000-000</Text>
+            <Text style={[styles.mb_5, styles.h6, styles.text_black]}>Student Number</Text>
+          </View>
+        </View>
+        <View>
+          <Input
+              name="amount"
+              placeholder='Enter amount here'
+              control={control}
+              errors={errors}
+              ifMultiLine={false}
+              rules={{
+                required: true,
+              }}
+            />
             <Input
-              name="email"
-              placeholder='Enter email here'
+              name="items"
+              placeholder='Enter items here'
               control={control}
               errors={errors}
+              ifMultiLine
               rules={{
                 required: true,
-                pattern: {value: EMAIL_REGEX, message: 'Invalid email'},
               }}
             />
-            <PasswordInput
-              name="password"
-              placeholder='Enter password here'
-              control={control}
-              errors={errors}
-              rules={{
-                required: true,
-                maxLength: 20,
-              }}
-            />
-            <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-              <Text style={[styles.text_blue, styles.mb_5, styles.forgot_password]}>Forgot password?</Text>
-            </TouchableOpacity>
           </View>
           <View style={{alignItems: 'center'}}>
-              <Button label={'Sign in'} onPress={handleSubmit(onSubmit)} />
+              <Button label={'SUBMIT'} onPress={handleSubmit(onSubmit)} />
           </View>
-        </View>
       </View>
     </MainContainer>
   )

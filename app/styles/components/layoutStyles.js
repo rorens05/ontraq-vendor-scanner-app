@@ -108,5 +108,13 @@ export default layoutStyles = {
   bottom: {
     position: 'absolute', 
     bottom: 0,
+  },
+  border_gray: {
+    borderColor: '#9A9A9A',
+    borderWidth: 1,
+    borderStyle: 'solid'
+  },
+  border_15:{
+    borderRadius: 15,
   }
 };

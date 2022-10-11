@@ -11,7 +11,8 @@ export default function Input({
   placeholder = '',
   rules = {},
   errors = {},
-  editable
+  editable,
+  ifMultiLine
 }) {
   const {field} = useController({
     control,
@@ -30,13 +31,15 @@ export default function Input({
           {label}
         </Text>
       }
-      <View style={[styles.inputContainer, {borderColor: error != null ? 'red' : 'transparent'}]}>
+      <View style={[styles.inputContainer, {borderColor: error != null ? 'red' : '#9A9A9A'}]}>
         <TextInput
           editable={editable}
           placeholder={placeholder}
           value={field.value}
           onChangeText={field.onChange}
           style={styles.textInput}
+          multiline={true}
+          numberOfLines={ifMultiLine ? 5 : 1}
         />
       </View>
       {error != null && (
@@ -59,16 +62,16 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   inputContainer: {
-    borderWidth: 0.5,
-    height: 40,
+    borderWidth: 1,
+    minHeight: 40,
     borderRadius: 10,
-    backgroundColor: '#EEEEEE',
+    backgroundColor: 'white',
     marginBottom: 12,
     color: '#000',
-    paddingHorizontal: 8,
+    paddingHorizontal: 5,
   },
   textInput: {
-    flex: 1, 
+    // flex: 1, 
     fontSize: 12, 
     padding: 12,
   },
