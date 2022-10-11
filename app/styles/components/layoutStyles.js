@@ -98,5 +98,15 @@ export default layoutStyles = {
   bottom_navigation: {
     position: 'absolute',
     height: 70,
+  },
+  announcement_item: { 
+    backgroundColor: '#000000ae', 
+    width: 230, 
+    height: 173, 
+    borderRadius: 15,
+  },
+  bottom: {
+    position: 'absolute', 
+    bottom: 0,
   }
 };

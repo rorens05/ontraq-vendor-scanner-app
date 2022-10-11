@@ -73,4 +73,9 @@ export default imageStyle = {
   arrow_color: {
     tintColor: BLUE,
   },
+  announcement_image_item: { 
+    width: 230, 
+    height: 173, 
+    borderRadius: 15,
+  },
 };
