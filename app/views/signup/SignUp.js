@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { NavigationContext } from '@react-navigation/native';
-import { View, Image, Text, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import { View, Image, Text, ScrollView, TouchableOpacity } from 'react-native';
 import RadiusTextInput from './components/RadiusTextInput';
 import Button from './components/Button';
 import DatePickerMonth from './components/DatePicker';
@@ -11,8 +11,10 @@ import { useForm } from 'react-hook-form';
 import Input from '../../components/form/Input';
 import PasswordInput from '../../components/form/PasswordInput';
 import { EMAIL_REGEX, PHONE_REGEX } from '../../../constants/regex';
+import MainContainer from '../../components/layout/MainContainer';
+import BackButton from '../../components/BackButton';
+import styles from '../../styles';
 
-const backArrow = require('../../assets/left-arrow.png')
 const birthdayIcon = require('../../assets/calendarIcon.png')
 
 export default function SignUp() {
@@ -20,7 +22,6 @@ export default function SignUp() {
   const [dateModal, setDateModal] = useState(false);
   const [birthday, setBirthday] = useState('');
   const [loader, setLoader] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
   const {
     control,
@@ -45,25 +46,19 @@ export default function SignUp() {
   };
 
   return (
-    <>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={{ backgroundColor: '#fff' }}>
-        <Image
-          source={backArrow}
-          resizeMode='contain'
-          style={{ height: 25, width: 25, marginHorizontal: 25, marginVertical: 20, tintColor: '#002E8A' }}
-        />
-      </TouchableOpacity>
-      <View style={{ flex: 1, justifyContent: 'space-evenly', backgroundColor: '#fff' }}>
-        <View style={{ alignSelf: 'center' }}>
-          <Image source={logo} style={{ width: 144, height: 144 }} />
+    <MainContainer>
+      <BackButton onPress={() => navigation.goBack()} />
+      <View style={[styles.flex_1, styles.justify_content_space_evenly]}>
+        <View style={styles.flex_center}>
+          <Image source={logo} style={styles.variant_144_144} />
         </View>
-        <View style={{ padding: 30 }}>
-          <Text style={{ color: '#002E8A', fontSize: 24, fontWeight: 'bold', marginBottom: 10 }}>Hi!</Text>
-          <Text style={{ color: '#9A9A9A', fontSize: 16, marginBottom: 30, fontWeight: '600' }}>Create new Account</Text>
+        <View style={styles.p_5}>
+          <Text style={[styles.h1, styles.mb_2, styles.text_blue]}>Hi!</Text>
+          <Text style={[styles.mb_5, styles.h4, styles.text_gray]}>Create new Account</Text>
           <ScrollView>
-            <View style={{}}>
-              <View style={{ flexDirection: 'row' }}>
-                <View style={{ flex: 1, marginRight: 10 }}>
+            <View>
+              <View style={styles.flex_row}>
+                <View style={[styles.flex_1, styles.mr_2]}>
                   <Input
                     name="first_name"
                     placeholder='Enter first name here'
@@ -72,7 +67,7 @@ export default function SignUp() {
                     rules={{ required: true, maxLength: 20 }}
                   />
                 </View>
-                <View style={{ flex: 1, marginLeft: 10 }}>
+                <View style={[styles.flex_1, styles.ml_2]}>
                   <Input
                     name="last_name"
                     placeholder='Enter last name here'
@@ -167,7 +162,7 @@ export default function SignUp() {
                 }}
               />
             </View>
-            <View style={{ flex: 1, paddingBottom: 30, alignSelf: 'center' }}>
+            <View style={[styles.pb_5, styles.flex_center, styles.flex_1]}>
               <Button
                 label={'Sign up'}
                 onPress={handleSubmit(onSubmit)}
@@ -186,6 +181,6 @@ export default function SignUp() {
         </View>
         {loader && <Loader />}
       </View>
-    </>
+    </MainContainer>
   )
 }

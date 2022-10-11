@@ -1,7 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
 import styles from '../../styles';
-import {WHITE} from '../../styles/colors';
 
 export default function MainContainer({children}) {
   return (

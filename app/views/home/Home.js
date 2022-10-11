@@ -10,6 +10,7 @@ import caluzaIcon from '../../assets/ceap-icon-caluza.png';
 import arreIcon from '../../assets/ceap-icon-arre.png';
 import SessionItem from './components/SessionItem';
 import MainContainer from '../../components/layout/MainContainer';
+import styles from '../../styles';
 
 export default function Home() {
   const programs = [
@@ -91,54 +92,24 @@ export default function Home() {
   return (
     <MainContainer>
       <Header />
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#fff',
-          paddingHorizontal: 20,
-          marginBottom: 70,
-        }}>
+      <View style={[styles.flex_1, styles.mb_5, styles.px_5]}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={{paddingBottom: 20}}>
-            <Text
-              style={{
-                color: '#000000',
-                fontSize: 24,
-                fontWeight: 'bold',
-                marginBottom: 24,
-              }}>
-              Announcement
-            </Text>
+          <View style={styles.pb_5}>
+            <Text style={[styles.h1, styles.mb_5]}>{'Announcement'}</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <AnnouncementItem image={logo} />
               <AnnouncementItem image={logo} />
             </ScrollView>
           </View>
           <View>
-            <Text
-              style={{
-                color: '#000000',
-                fontSize: 24,
-                fontWeight: 'bold',
-                marginBottom: 12,
-              }}>
-              CEAP Conference and Expo
-            </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingBottom: 20,
-              }}>
+          <Text style={[styles.h1, styles.mb_2]}>{'CEAP Conference and Expo'}</Text>
+            <View style={[styles.pb_5, styles.flex_row, styles.align_items_center]}>
               <Image
                 source={tvIcon}
                 resizeMode="contain"
-                style={{width: 30, height: 30, marginHorizontal: 10}}
+                style={[styles.mx_2, styles.variant_30_30]}
               />
-              <Text
-                style={{color: '#FF4F6B', fontSize: 20, fontWeight: 'bold'}}>
-                Sessions for Today
-              </Text>
+              <Text style={styles.session_label}>{'Sessions for Today'}</Text>
             </View>
             {programs.map((item, key) => {
               return <SessionItem key={key} item={item} />;

@@ -1,6 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {View, Text, Image, Dimensions, TouchableOpacity, StyleSheet} from 'react-native';
-import { UserContext } from '../app/context/UserContext';
+import React from 'react';
+import {View, Image, Dimensions} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -22,8 +21,8 @@ import SponsorProfile from '../app/views/sponsor/components/SponsorProfile';
 import Dashboard from '../app/views/dashboard/Dashboard';
 import EventProfile from '../app/views/dashboard/components/EventProfile';
 import UpcomingEventProfile from '../app/views/dashboard/components/UpcomingEventProfile';
+import styles from '../app/styles';
 
-const {width} = Dimensions.get('screen');
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const sponsorsName = 'Sponsors';
@@ -36,23 +35,13 @@ const programIcon = require('../app/assets/ceap-program.png');
 const officeIcon = require('../app/assets/ceap-office.png');
 
 const MyTabs = () => {
-  // const userContext = useContext(UserContext);
-  // const {showModal, modalVisible} = userContext.data
   return (
     <Tab.Navigator
-      // initialRouteName={Home}
+      initialRouteName={Home}
       screenOptions={({route}) => ({
         tabBarActiveTintColor: 'transparent',
         tabBarInactiveTintColor: 'transparent',
-        tabBarStyle: {
-          paddingVertical: 5,
-          // borderTopLeftRadius: 15,
-          // borderTopRightRadius: 15,
-          backgroundColor: '#fff',
-          position: 'absolute',
-          height: 70,
-        },
-        // tabBarLabelStyle: {paddingBottom: 3},
+        tabBarStyle: [styles.bottom_navigation, styles.bg_white, styles.py_1],
       })}>
       <Tab.Screen
         name={homeName}
@@ -61,21 +50,10 @@ const MyTabs = () => {
           headerShown: false,
           tabBarIcon: ({size, focused, color}) => {
             return (
-              <View style={{
-                height: 55,
-                width: 55,
-                borderRadius: 30,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 7
-              }}>
+              <View style={[styles.variant_50_50, styles.flex_center, styles.mt_2]}>
                 <Image
                   resizeMode="contain"
-                  style={{
-                    width: width / 13,
-                    height: width / 13,
-                    tintColor: focused ? '#002E8A' : '#EBEBEB'
-                  }}
+                  style={[styles.variant_30_30, {tintColor: focused ? '#002E8A' : '#EBEBEB'}]}
                   source={homeIcon}
                 />
                 {/* <Text 
@@ -97,21 +75,10 @@ const MyTabs = () => {
           headerShown: false,
           tabBarIcon: ({size, focused, color}) => {
             return (
-              <View style={{
-                height: 55,
-                width: 55,
-                borderRadius: 30,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 7
-              }}>
+              <View style={[styles.variant_50_50, styles.flex_center, styles.mt_2]}>
                 <Image
                   resizeMode="contain"
-                  style={{
-                    width: width / 13,
-                    height: width / 13,
-                    tintColor: focused ? '#002E8A' : '#EBEBEB'
-                  }}
+                  style={[styles.variant_30_30, {tintColor: focused ? '#002E8A' : '#EBEBEB'}]}
                   source={officeIcon}
                 />
                 {/* <Text 
@@ -133,21 +100,10 @@ const MyTabs = () => {
           headerShown: false,
           tabBarIcon: ({size, focused, color}) => {
             return (
-              <View style={{
-                height: 55,
-                width: 55,
-                borderRadius: 30,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 7
-              }}>
+              <View style={[styles.variant_50_50, styles.flex_center, styles.mt_2]}>
                 <Image
                   resizeMode="contain"
-                  style={{
-                    width: width / 13,
-                    height: width / 13,
-                    tintColor: focused ? '#002E8A' : '#EBEBEB'
-                  }}
+                  style={[styles.variant_30_30, {tintColor: focused ? '#002E8A' : '#EBEBEB'}]}
                   source={programIcon}
                 />
                 {/* <Text 
@@ -169,21 +125,10 @@ const MyTabs = () => {
           headerShown: false,
           tabBarIcon: ({size, focused, color}) => {
             return (
-              <View style={{
-                height: 55,
-                width: 55,
-                borderRadius: 30,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 7
-              }}>
+              <View style={[styles.variant_50_50, styles.flex_center, styles.mt_2]}>
                 <Image
                   resizeMode="contain"
-                  style={{
-                    width: width / 13,
-                    height: width / 13,
-                    tintColor: focused ? '#002E8A' : '#EBEBEB'
-                  }}
+                  style={[styles.variant_30_30, {tintColor: focused ? '#002E8A' : '#EBEBEB'}]}
                   source={micIcon}
                 />
                 {/* <Text 

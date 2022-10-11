@@ -1,4 +1,4 @@
-import {BLACK, COLOR_DANGER} from '../colors';
+import {BLACK, BLUE, COLOR_DANGER, GRAY, WHITE} from '../colors';
 
 export default fontStyles = {
   h1: {
@@ -35,4 +35,54 @@ export default fontStyles = {
   text_danger: {
     color: COLOR_DANGER,
   },
+  text_white: {
+    color: WHITE
+  },
+  text_black: {
+    color: BLACK
+  },
+  text_blue: {
+    color: BLUE,
+  },
+  text_gray: {
+    color: GRAY
+  },
+  profile_description: {
+    color: '#fff', 
+    fontSize: 16, 
+    fontWeight: '300',
+  },
+  profile_title: {
+    color: BLACK, 
+    fontSize: 32, 
+    fontWeight: 'bold'
+  },
+  profile_date: {
+    color: COLOR_DANGER, 
+    fontSize: 16, 
+    fontWeight: 'bold'
+  },
+  attendess_label: {
+    position: 'absolute',
+    alignSelf: 'center',
+    fontSize: 16,
+    textAlign: 'center',
+    top: '10%',
+    fontWeight: '500',
+    color: WHITE,
+  },
+  button_label:{
+    color: '#fff', 
+    fontWeight: '500',
+  },
+  forgot_password: {
+    textAlign: 'right', 
+    fontSize: 16, 
+    fontWeight: '200'
+  },
+  session_label: {
+    color: '#FF4F6B', 
+    fontSize: 20, 
+    fontWeight: 'bold',
+  }
 };
