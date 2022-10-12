@@ -57,9 +57,6 @@ export default function QrScanner() {
             style={[styles.icon_tint, styles.variant_300_300, ]}
             resizeMode="contain"
           />
-          <View style={styles.pt_5}>
-            <Button label={'Cancel'} onPress={() => navigation.goBack()} />
-          </View>
         </View>
     </View>
   )
