@@ -1,4 +1,4 @@
-import {BLACK, BLUE, COLOR_DANGER, GRAY, WHITE} from '../colors';
+import {BLACK, BLUE, COLOR_DANGER, GRAY, GREEN, WHITE} from '../colors';
 
 export default fontStyles = {
   h1: {
@@ -46,6 +46,15 @@ export default fontStyles = {
   },
   text_gray: {
     color: GRAY
+  },
+  text_green: {
+    color: GREEN
+  },
+  total_sale: {
+    fontSize: 40,
+    color: WHITE,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   profile_description: {
     color: '#fff', 

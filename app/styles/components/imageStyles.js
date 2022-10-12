@@ -36,6 +36,10 @@ export default imageStyle = {
     height: 25, 
     width: 25
   },
+  variant_20_20: {
+    height: 20, 
+    width: 20
+  },
   variant_30_20: {
     width: 30,
     height: 20,

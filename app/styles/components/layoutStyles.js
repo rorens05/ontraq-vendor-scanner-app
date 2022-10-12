@@ -1,10 +1,13 @@
 import {StyleSheet, Dimensions} from 'react-native';
-import {ARROW_COLOR, INPUT_TEXT_BACKGROUND_COLOR, PLACEHOLDER_COLOR, WHITE} from '../colors';
+import {ARROW_COLOR, BLUE, INPUT_TEXT_BACKGROUND_COLOR, PLACEHOLDER_COLOR, WHITE} from '../colors';
 const { width, height } = Dimensions.get('screen');
 
 export default layoutStyles = {
   bg_white: {
     backgroundColor: WHITE,
+  },
+  bg_blue: {
+    backgroundColor: BLUE,
   },
   flex_1: {
     flex: 1,
@@ -21,6 +24,9 @@ export default layoutStyles = {
   },
   justify_content_space_between: {
     justifyContent: 'space-between'
+  },
+  justify_content_center: {
+    justifyContent: 'center'
   },
   x_icon: {
     color: PLACEHOLDER_COLOR,
@@ -83,6 +89,12 @@ export default layoutStyles = {
     alignItems: 'center', 
     borderRadius: 10,
   },
+  filter: {
+    backgroundColor: '#103E78', 
+    width: 120, 
+    alignItems: 'center', 
+    borderRadius: 10,
+  },
   modal_button: {
     backgroundColor: '#103E78', 
     width: 260, 
@@ -132,5 +144,13 @@ export default layoutStyles = {
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 999,
+  },
+  today_date: {
+    position: 'absolute', 
+    top: 8,
+    left: 8,
+  },
+  transaction: {
+    marginBottom: 50
   }
 };
