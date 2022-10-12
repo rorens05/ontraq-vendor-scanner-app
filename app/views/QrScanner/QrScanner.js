@@ -26,8 +26,10 @@ export default function QrScanner() {
     }
     let response = await new Scanner().verifyToken(data);
     // alert(JSON.stringify(data))
-    if(response.data != null){
+    if(response?.ok){
       return navigation.navigate('Transaction', {data: response?.data})
+    } else {
+      alert('Invalid QR Code')
     }
   };
 
@@ -41,6 +43,8 @@ export default function QrScanner() {
           }}
           cameraType="back"
           onRead={handleScan}
+          reactivate={true}
+          reactivateTimeout={3000}
         // flashMode={RNCamera.Constants.FlashMode.torch}
         />
         <View
