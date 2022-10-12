@@ -1,18 +1,24 @@
 import React, {useContext,useState,useEffect} from 'react'
-import {View, Text, Dimensions} from 'react-native'
+import {View, Text} from 'react-native'
 import Button from './components/Button'
 import { NavigationContext } from '@react-navigation/native';
 import styles from '../../styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Scanner from '../../api/Scanner';
 
-export default function Login() {
+export default function CodeScreen() {
   const navigation = useContext(NavigationContext);
   const [code, setCode] = useState('');
 
   const generateCode = async() => {
-    const generatedCode = Math.random().toString(36).slice(2, 8).toUpperCase();
-    setCode(generatedCode);
-    await AsyncStorage.setItem("code", generatedCode);
+    let localCode = await AsyncStorage.getItem('code');
+    if(localCode == '' || localCode == null){
+      const generatedCode = Math.random().toString(36).slice(2, 8).toUpperCase();
+      setCode(generatedCode);
+      await AsyncStorage.setItem("code", generatedCode);
+      return 
+    } 
+    setCode(localCode)
   }
   
   useEffect(() => {
@@ -20,11 +26,15 @@ export default function Login() {
   }, [])
   
 
-  const hanldeReload = async e => {
-    if(true){
+  const hanldeReload = async () => {
+    let code = await AsyncStorage.getItem('code');
+
+    let response = await new Scanner().deviceInfo(code);
+    // alert(JSON.stringify(code))
+    if(response?.ok){
       navigation.navigate('QrScanner')
-    }else{
-      alert('Under Development')
+    } else {
+      alert('Please register the device.')
     }
   };
   return (

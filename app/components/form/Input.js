@@ -12,7 +12,8 @@ export default function Input({
   rules = {},
   errors = {},
   editable,
-  ifMultiLine
+  ifMultiLine,
+  keyboardType,
 }) {
   const {field} = useController({
     control,
@@ -40,6 +41,7 @@ export default function Input({
           style={styles.textInput}
           multiline={true}
           numberOfLines={ifMultiLine ? 5 : 1}
+          keyboardType={keyboardType}
         />
       </View>
       {error != null && (

@@ -14,4 +14,12 @@ export default class Scanner extends Base {
       data
     })
   }
+
+  createTransaction = async (data) => {
+    return this.sendRequest({
+      path: `/transactions`,
+      method: 'POST',
+      data
+    })
+  }
 }

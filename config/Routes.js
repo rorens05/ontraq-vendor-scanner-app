@@ -2,9 +2,10 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from '../app/views/splashscreen/SplashScreen';
-import Login from '../app/views/login/Login';
-import LoginScreen from '../app/views/login/LoginScreen';
+import CodeScreen from '../app/views/Code/CodeScreen';
+import Transaction from '../app/views/Transaction/Transaction';
 import QrScanner from '../app/views/QrScanner/QrScanner';
+import Dashboard from '../app/views/Dashboard/Dashboard';
 import ModalSuccess from '../app/components/modal/ModalSuccess';
 import ModalFailed from '../app/components/modal/ModalFailed';
 
@@ -28,16 +29,24 @@ export default function Routes() {
           }}
         />
         <Stack.Screen
-          name="Login"
-          component={Login}
+          name="Dashboard"
+          component={Dashboard}
           options={{
             headerShown: false,
             gestureEnabled: false
           }}
         />
         <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
+          name="CodeScreen"
+          component={CodeScreen}
+          options={{
+            headerShown: false,
+            gestureEnabled: false
+          }}
+        />
+        <Stack.Screen
+          name="Transaction"
+          component={Transaction}
           options={{
             headerShown: false,
             gestureEnabled: false

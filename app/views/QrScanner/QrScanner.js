@@ -3,7 +3,9 @@ import { View, Text, Image, Dimensions } from 'react-native'
 import { NavigationContext } from '@react-navigation/native';
 import styles from '../../styles';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Scanner from '../../api/Scanner';
+import Button from '../../components/Button';
 
 export default function QrScanner() {
   const navigation = useContext(NavigationContext);
@@ -13,20 +15,19 @@ export default function QrScanner() {
     if (e) {
       setQrData(e?.data);
       verifyQRCode(e?.data);
-    }
+  }
   };
 
-  const verifyQRCode = async (qr_token) => {
-    console.warn('Verifying QR Code', qr_token);
-    let code = await AsyncStorage.getItem('code')
+  const verifyQRCode = async qr_code => {
+    let code = await AsyncStorage.getItem('code');
     let data = {
-      "qr_code": qr_token,
+      "qr_code": qr_code,
       "scanner_code": code
     }
     let response = await new Scanner().verifyToken(data);
-    if(response.data == null){
-      // return navigation.navigate('LoginScreen')
-      alert('sample')
+    // alert(JSON.stringify(data))
+    if(response.data != null){
+      return navigation.navigate('Transaction', {data: response?.data})
     }
   };
 
@@ -52,6 +53,9 @@ export default function QrScanner() {
             style={[styles.icon_tint, styles.variant_300_300, ]}
             resizeMode="contain"
           />
+          <View style={styles.pt_5}>
+            <Button label={'Cancel'} onPress={() => navigation.goBack()} />
+          </View>
         </View>
     </View>
   )
