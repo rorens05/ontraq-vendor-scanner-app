@@ -11,16 +11,16 @@ const navigation = React.useContext(NavigationContext)
     let code = await AsyncStorage.getItem('code')
 
     if (code == null || code == ''){
-      return navigation.navigate('CodeScreen')
+      return navigation.replace('CodeScreen')
     }
 
     let response = await new Scanner().deviceInfo(code)
     if(response.data == null){
-      return navigation.navigate('CodeScreen')
+      return navigation.replace('CodeScreen')
     }
 
     await AsyncStorage.setItem('code', code)
-    return navigation.navigate('Dashboard')
+    return navigation.replace('Dashboard')
 
   }
 

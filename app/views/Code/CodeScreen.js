@@ -11,6 +11,7 @@ export default function CodeScreen() {
   const [code, setCode] = useState('');
 
   const generateCode = async() => {
+    
     let localCode = await AsyncStorage.getItem('code');
     if(localCode == '' || localCode == null){
       const generatedCode = Math.random().toString(36).slice(2, 8).toUpperCase();
@@ -30,9 +31,9 @@ export default function CodeScreen() {
     let code = await AsyncStorage.getItem('code');
 
     let response = await new Scanner().deviceInfo(code);
-    // alert(JSON.stringify(code))
+    // alert(JSON.stringify(response))
     if(response?.ok){
-      navigation.navigate('QrScanner')
+      navigation.navigate('Dashboard')
     } else {
       alert('Please register the device.')
     }
