@@ -36,14 +36,14 @@ export default function Dashboard() {
     }
     setTotalSales(sales);
   } else {
-    alert(JSON.stringify(response))
+    alert(response?.statusMessage)
     }
     setLoader(false)
   };
   
   useEffect(() => {
     getStoreInfo()
-  }, [date])
+  }, [store])
 
   return (
     <View style={[styles.flex_1, styles.bg_white]}>
@@ -55,7 +55,7 @@ export default function Dashboard() {
       <View style={[styles.flex_1, styles.p_5, styles.upcoming_event_profile_info_container]}>
         <View style={[styles.flex_row, styles.justify_content_space_between]}>
           <Text style={[styles.h2, styles.text_blue]}>{'Today'}</Text>
-          <Filter onPress={() => setDateModal(true)} label={date} />
+          {/* <Filter onPress={() => setDateModal(true)} label={date} /> */}
         </View>
         <ScrollView style={[styles.transaction]} showsVerticalScrollIndicator={false}>
         {store?.sort((a, b) => Date.parse(b.transaction_datetime) - Date.parse(a.transaction_datetime)).map((item, key) => {
