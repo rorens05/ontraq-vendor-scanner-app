@@ -10,7 +10,7 @@ import styles from '../../styles';
 import BackButton from '../../components/BackButton';
 import {getParams} from '../../utils/navigation_helper'
 import Scanner from '../../api/Scanner';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import Modal from '../../components/modal/Modal';
 
 export default function Transaction() {
@@ -77,13 +77,13 @@ export default function Transaction() {
               />
               <Input
                 name="items"
-                placeholder='Enter items here'
+                placeholder='Enter items here (optional)'
                 control={control}
                 errors={errors}
                 ifMultiLine
-                rules={{
-                  required: true,
-                }}
+                // rules={{
+                //   required: true,
+                // }}
               />
             </View>
             <View style={{alignItems: 'center'}}>

@@ -5,7 +5,7 @@ import styles from '../../styles';
 import Filter from './components/Filter';
 import TransactionItem from './components/TransactionItems';
 import Store from '../../api/Store';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import { currencyFormat } from '../../utils/MoneyConverter';
 import moment from 'moment';
 import Loader from '../../components/FullscreenActivityIndicator';

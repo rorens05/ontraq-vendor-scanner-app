@@ -3,7 +3,7 @@ import { View, Text, Image, Dimensions } from 'react-native'
 import { NavigationContext } from '@react-navigation/native';
 import styles from '../../styles';
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import Scanner from '../../api/Scanner';
 import Button from '../../components/Button';
 

@@ -1,8 +1,9 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import { NavigationContext } from '@react-navigation/native';
 import React from 'react'
 import {View, Text} from 'react-native'
 import Scanner from '../../api/Scanner';
+import styles from '../../styles';
 
 export default function SplashScreen() {
 const navigation = React.useContext(NavigationContext)
@@ -34,8 +35,8 @@ const navigation = React.useContext(NavigationContext)
   }, [])
   
   return (
-    <View style = {{ flex: 1, backgroundColor: '#fff', justifyContent: 'center', alignItems: 'center' }}>
-      <Text>This is SplashScreen screen</Text>
+    <View style = {{ flex: 1, backgroundColor: '#26387E', justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={[styles.total_sale, styles.px_5, styles.text_white]}>{`OntraQ Wallet`}</Text>
     </View>
   )
 }
