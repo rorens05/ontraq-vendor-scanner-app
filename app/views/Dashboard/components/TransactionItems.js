@@ -4,10 +4,10 @@ import styles from '../../../styles';
 import moment from 'moment';
 import { currencyFormat } from '../../../utils/MoneyConverter';
 
-export default function TransactionItem({item, key}) {
+export default function TransactionItem({item, id}) {
   
   return (
-    <View key={key} style={[styles.py_3, styles.px_2]}>
+    <View key={id} style={[styles.py_3, styles.px_2]}>
     <View style={[styles.flex_row, styles.justify_content_space_between]}>
       <Text style={[styles.text_gray]}>{'Received money from'}</Text>
       <Text style={[styles.text_gray]}>{moment(item?.transaction_datetime).format('MM/DD/YYYY')}</Text>

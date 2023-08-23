@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react'
-import {View, Text, Image, ScrollView} from 'react-native'
+import {View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, Alert} from 'react-native'
 import { NavigationContext } from '@react-navigation/native';
 import defaultProfile from '../../assets/profile_icon.png'
 import Button from '../../components/Button'
@@ -12,6 +12,7 @@ import {getParams} from '../../utils/navigation_helper'
 import Scanner from '../../api/Scanner';
 import AsyncStorage from '@react-native-community/async-storage';
 import Modal from '../../components/modal/Modal';
+import TypeModal from './components/Modal';
 
 export default function Transaction() {
     const navigation = useContext(NavigationContext);
@@ -19,6 +20,43 @@ export default function Transaction() {
     const data = params?.data;
     const [showModal, setShowModal] = useState(false)
     const [success, setSuccess] = useState(null)
+    const [type, setType] = useState('');
+    const [typeModal, setTypeModal] = useState(false);
+
+    const showAlert = (forDemo) => {
+      Alert.alert(
+        'Transaction',
+        `Do you want to proceed this transaction? \n
+        Price: ${forDemo?.amount} \n
+        Type: ${type}
+        `,
+        [
+          {
+            text: 'Cancel',
+            onPress: () => {},
+            style: 'cancel',
+          },
+          {
+            text: 'Confirm',
+            onPress: async () => {
+              let code = await AsyncStorage.getItem('code');
+                const temp = {
+                    "amount": forDemo?.amount,
+                    "description": type,
+                    "qr_code": data?.qr_token,
+                    "scanner_code": code,
+                }
+                const response = await new Scanner().createTransaction(temp);
+                if (response?.ok) {
+                  setShowModal(true)
+                  setSuccess(response?.ok)
+                }
+            },
+          },
+        ],
+        'secure-text',
+      );
+    }
 
     const {
       control,
@@ -29,17 +67,10 @@ export default function Transaction() {
   
     const onSubmit = async forDemo => {
     // alert(JSON.stringify(forDemo))
-    let code = await AsyncStorage.getItem('code');
-    const temp = {
-        "amount": forDemo?.amount,
-        "description": forDemo?.items,
-        "qr_code": data?.qr_token,
-        "scanner_code": code,
-      }
-      const response = await new Scanner().createTransaction(temp);
-      if (response?.ok) {
-        setShowModal(true)
-        setSuccess(response?.ok)
+    if(type == ''){
+      alert('Please select type.')
+      }else{
+        showAlert(forDemo)
       }
     };
 
@@ -56,8 +87,8 @@ export default function Transaction() {
             </View>
             <View>
               <Text style={[styles.h1, styles.text_black]}>{data?.user?.name}</Text>
-              <Text style={[styles.h6, styles.text_gray, styles.pb_3]}>Name</Text>
-              <Text style={[styles.h1, styles.text_black]}>{data?.user?.address || "Not available"}</Text>
+              {/* <Text style={[styles.h6, styles.text_gray, styles.pb_3]}>Name</Text>
+              <Text style={[styles.h1, styles.text_black]}>{data?.user?.address || "Not available"}</Text> */}
               <Text style={[styles.h6, styles.text_gray, styles.pb_3]}>Address</Text>
               <Text style={[styles.h1, styles.text_black]}>{data?.student_no}</Text>
               <Text style={[styles.mb_5, styles.h6, styles.text_gray]}>Student Number</Text>
@@ -75,16 +106,20 @@ export default function Transaction() {
                   required: true,
                 }}
               />
-              <Input
-                name="items"
-                placeholder='Enter items here (optional)'
-                control={control}
-                errors={errors}
-                ifMultiLine
-                // rules={{
-                //   required: true,
-                // }}
-              />
+              <TouchableOpacity onPress={() => setTypeModal(!typeModal) }>
+                <Text style={{
+                  borderWidth: StyleSheet.hairlineWidth,
+                  minHeight: 40,
+                  borderRadius: 10,
+                  backgroundColor: 'white',
+                  marginBottom: 12,
+                  color: '#000',
+                  paddingHorizontal: 20,
+                  textAlignVertical: 'center'
+                  }}>
+                    {type == '' ? 'Select type' : type}
+                </Text>
+              </TouchableOpacity>
             </View>
             <View style={{alignItems: 'center'}}>
                 <Button label={'SUBMIT'} onPress={handleSubmit(onSubmit)} />
@@ -93,6 +128,7 @@ export default function Transaction() {
       </View>
     </MainContainer>
       { showModal && <Modal status={success} /> }
+      {typeModal && <TypeModal setType={setType} setTypeModal={setTypeModal} />}
     </>
   )
 }

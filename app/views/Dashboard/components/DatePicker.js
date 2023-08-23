@@ -52,12 +52,12 @@ export default function DatePickerAndroid({ openModal, closeModalDate, mode, onC
         >
           <Text style={{ color: '#fff', fontWeight: 'bold', letterSpacing: 2 }}>{'SELECT'}</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => closeModalDate('Filter')}
           style={{ height: 40, marginTop: 10, backgroundColor: '#A3D063', width: 350, borderRadius: 30, justifyContent: 'center', alignItems: 'center' }}
         >
           <Text style={{ color: '#fff', fontWeight: 'bold', letterSpacing: 2 }}>{'SEE ALL'}</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </SafeAreaView>
     </Modal >
   )
