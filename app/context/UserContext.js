@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import React, {Component} from 'react';
 // import Auth from '../api/Auth';
 // import Modal from '../../app/components/Modal.js'

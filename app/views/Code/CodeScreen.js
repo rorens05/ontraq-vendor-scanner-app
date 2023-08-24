@@ -3,7 +3,7 @@ import {View, Text} from 'react-native'
 import Button from '../../components/Button'
 import { NavigationContext } from '@react-navigation/native';
 import styles from '../../styles';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-community/async-storage';
 import Scanner from '../../api/Scanner';
 
 export default function CodeScreen() {
